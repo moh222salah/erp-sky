@@ -1,258 +1,372 @@
 {
-  "companies": [
+  "company": {
+    "name": "شركة الطيبة للخدمات البيئية ذ.م.م",
+    "name_en": "Al-Tayyibah Environmental Services LLC",
+    "location": "المدينة المنورة",
+    "tax_id": "310123456700003",
+    "cr_number": "2050123456"
+  },
+  
+  "stats": {
+    "net_profit": 285420.50,
+    "profit_growth": 18.3,
+    "expenses": 412680.75,
+    "expense_growth": 7.2,
+    "tax_paid": 61875.25,
+    "fuel_efficiency": 88.4,
+    "efficiency_improvement": 5.7
+  },
+  
+  "fleet_efficiency": [
     {
-      "id": "ENV001",
-      "name": {
-        "ar": "شركة البيئة النظيفة للخدمات البيئية",
-        "en": "Clean Environment Services Company"
-      },
-      "location": {
-        "ar": "المدينة المنورة، المملكة العربية السعودية",
-        "en": "Madinah, Kingdom of Saudi Arabia"
-      },
-      "logo": "https://via.placeholder.com/150x50/667eea/ffffff?text=Clean+Env",
-      "registration": "CR-2024-ENV-001",
-      "vat_number": "310123456700003",
-      "stats": {
-        "net_profit": 2847500.75,
-        "profit_growth": 18.5,
-        "expenses": 4523800.25,
-        "expense_growth": 12.3,
-        "tax_paid": 427125.11,
-        "fuel_efficiency": 87.5,
-        "efficiency_improvement": 5.2
-      },
-      "fleet_efficiency": [
-        {"truck": "TR-001", "fuel_cost": 42800, "maintenance": 8500, "efficiency": 92, "status": "active"},
-        {"truck": "TR-002", "fuel_cost": 38500, "maintenance": 12000, "efficiency": 88, "status": "active"},
-        {"truck": "TR-003", "fuel_cost": 51200, "maintenance": 15800, "efficiency": 76, "status": "maintenance"},
-        {"truck": "TR-004", "fuel_cost": 45300, "maintenance": 9200, "efficiency": 90, "status": "active"},
-        {"truck": "TR-005", "fuel_cost": 39700, "maintenance": 7500, "efficiency": 94, "status": "active"}
-      ],
-      "expense_breakdown": [
-        {"category": {"ar": "الوقود", "en": "Fuel"}, "amount": 217500},
-        {"category": {"ar": "الصيانة", "en": "Maintenance"}, "amount": 53000},
-        {"category": {"ar": "الرواتب", "en": "Salaries"}, "amount": 2850000},
-        {"category": {"ar": "المرافق", "en": "Utilities"}, "amount": 285300},
-        {"category": {"ar": "التأمين", "en": "Insurance"}, "amount": 118000}
-      ],
-      "monthly_trend": [
-        {"month": {"ar": "يناير", "en": "January"}, "profit": 420000, "expenses": 385000},
-        {"month": {"ar": "فبراير", "en": "February"}, "profit": 395000, "expenses": 410000},
-        {"month": {"ar": "مارس", "en": "March"}, "profit": 468000, "expenses": 390000},
-        {"month": {"ar": "أبريل", "en": "April"}, "profit": 512000, "expenses": 375000},
-        {"month": {"ar": "مايو", "en": "May"}, "profit": 485000, "expenses": 395000},
-        {"month": {"ar": "يونيو", "en": "June"}, "profit": 498000, "expenses": 402000},
-        {"month": {"ar": "يوليو", "en": "July"}, "profit": 535000, "expenses": 388000},
-        {"month": {"ar": "أغسطس", "en": "August"}, "profit": 520000, "expenses": 398000},
-        {"month": {"ar": "سبتمبر", "en": "September"}, "profit": 478000, "expenses": 415000},
-        {"month": {"ar": "أكتوبر", "en": "October"}, "profit": 562000, "expenses": 385000},
-        {"month": {"ar": "نوفمبر", "en": "November"}, "profit": 548000, "expenses": 390000},
-        {"month": {"ar": "ديسمبر", "en": "December"}, "profit": 580000, "expenses": 395000}
+      "truck": "شاحنة 101",
+      "truck_en": "Truck-101",
+      "fuel_cost": 12500.00,
+      "maintenance": 3200.00,
+      "efficiency": 92.5,
+      "status": "active",
+      "driver": "محمد العمري",
+      "route": "المدينة المنورة - جدة"
+    },
+    {
+      "truck": "شاحنة 102",
+      "truck_en": "Truck-102",
+      "fuel_cost": 15200.00,
+      "maintenance": 2800.00,
+      "efficiency": 89.3,
+      "status": "active",
+      "driver": "أحمد السعيد",
+      "route": "المدينة المنورة - الرياض"
+    },
+    {
+      "truck": "شاحنة 103",
+      "truck_en": "Truck-103",
+      "fuel_cost": 9800.00,
+      "maintenance": 4500.00,
+      "efficiency": 85.7,
+      "status": "maintenance",
+      "driver": "خالد الحربي",
+      "route": "داخل المدينة"
+    },
+    {
+      "truck": "شاحنة 104",
+      "truck_en": "Truck-104",
+      "fuel_cost": 18500.00,
+      "maintenance": 3100.00,
+      "efficiency": 91.2,
+      "status": "active",
+      "driver": "عبدالله الأنصاري",
+      "route": "المدينة المنورة - ينبع"
+    },
+    {
+      "truck": "شاحنة 105",
+      "truck_en": "Truck-105",
+      "fuel_cost": 14300.00,
+      "maintenance": 2900.00,
+      "efficiency": 87.8,
+      "status": "active",
+      "driver": "سعد القحطاني",
+      "route": "المدينة المنورة - تبوك"
+    },
+    {
+      "truck": "شاحنة 106",
+      "truck_en": "Truck-106",
+      "fuel_cost": 11200.00,
+      "maintenance": 3600.00,
+      "efficiency": 88.9,
+      "status": "active",
+      "driver": "فهد الدوسري",
+      "route": "داخل المدينة"
+    }
+  ],
+  
+  "expense_breakdown": [
+    {
+      "category": "الوقود",
+      "category_en": "Fuel",
+      "amount": 142600.00,
+      "percentage": 34.6,
+      "vat_amount": 21390.00
+    },
+    {
+      "category": "الرواتب",
+      "category_en": "Salaries",
+      "amount": 180400.00,
+      "percentage": 43.7,
+      "vat_amount": 0
+    },
+    {
+      "category": "الصيانة",
+      "category_en": "Maintenance",
+      "amount": 52300.00,
+      "percentage": 12.7,
+      "vat_amount": 7845.00
+    },
+    {
+      "category": "الإيجارات",
+      "category_en": "Rent",
+      "amount": 24500.00,
+      "percentage": 5.9,
+      "vat_amount": 3675.00
+    },
+    {
+      "category": "أخرى",
+      "category_en": "Others",
+      "amount": 12880.75,
+      "percentage": 3.1,
+      "vat_amount": 1932.11
+    }
+  ],
+  
+  "monthly_trend": [
+    {
+      "month": "يناير",
+      "month_en": "January",
+      "revenue": 185200.00,
+      "expenses": 138500.00,
+      "profit": 46700.00,
+      "vat": 8505.00
+    },
+    {
+      "month": "فبراير",
+      "month_en": "February",
+      "revenue": 192800.00,
+      "expenses": 142300.00,
+      "profit": 50500.00,
+      "vat": 8845.00
+    },
+    {
+      "month": "مارس",
+      "month_en": "March",
+      "revenue": 178400.00,
+      "expenses": 145600.00,
+      "profit": 32800.00,
+      "vat": 8184.00
+    },
+    {
+      "month": "أبريل",
+      "month_en": "April",
+      "revenue": 205600.00,
+      "expenses": 149200.00,
+      "profit": 56400.00,
+      "vat": 9456.00
+    },
+    {
+      "month": "مايو",
+      "month_en": "May",
+      "revenue": 198300.00,
+      "expenses": 151800.00,
+      "profit": 46500.00,
+      "vat": 9105.00
+    },
+    {
+      "month": "يونيو",
+      "month_en": "June",
+      "revenue": 212500.00,
+      "expenses": 155400.00,
+      "profit": 57100.00,
+      "vat": 9675.00
+    },
+    {
+      "month": "يوليو",
+      "month_en": "July",
+      "revenue": 189700.00,
+      "expenses": 148900.00,
+      "profit": 40800.00,
+      "vat": 8655.00
+    },
+    {
+      "month": "أغسطس",
+      "month_en": "August",
+      "revenue": 195400.00,
+      "expenses": 152100.00,
+      "profit": 43300.00,
+      "vat": 8895.00
+    },
+    {
+      "month": "سبتمبر",
+      "month_en": "September",
+      "revenue": 208900.00,
+      "expenses": 158600.00,
+      "profit": 50300.00,
+      "vat": 9535.00
+    },
+    {
+      "month": "أكتوبر",
+      "month_en": "October",
+      "revenue": 218600.00,
+      "expenses": 162400.00,
+      "profit": 56200.00,
+      "vat": 9972.00
+    },
+    {
+      "month": "نوفمبر",
+      "month_en": "November",
+      "revenue": 225800.00,
+      "expenses": 168200.00,
+      "profit": 57600.00,
+      "vat": 10290.00
+    },
+    {
+      "month": "ديسمبر",
+      "month_en": "December",
+      "revenue": 232100.00,
+      "expenses": 174500.00,
+      "profit": 57600.00,
+      "vat": 10581.50
+    }
+  ],
+  
+  "journal_entries": [
+    {
+      "voucher_no": "JV-00234",
+      "posting_date": "2024-01-15",
+      "total_debit": 8000.00,
+      "total_credit": 8000.00,
+      "user_remark": "دفعة موردين - يناير 2024",
+      "entries": [
+        {
+          "account": "5110 - مصاريف الوقود",
+          "account_en": "5110 - Fuel Expenses",
+          "party_type": "Supplier",
+          "party": "SUP-00123",
+          "party_name": "مؤسسة النور للديزل",
+          "party_name_en": "Al-Noor Diesel Est.",
+          "debit": 3000.00,
+          "credit": 0,
+          "against_account": "2110 - الموردين",
+          "reference_type": "Purchase Invoice",
+          "reference_name": "PINV-2024-00045",
+          "cost_center": "CC-FUEL-001"
+        },
+        {
+          "account": "5210 - إيجار معدات",
+          "account_en": "5210 - Equipment Rental",
+          "party_type": "Supplier",
+          "party": "SUP-00124",
+          "party_name": "شركة الأمانة للمعدات",
+          "party_name_en": "Al-Amanah Equipment Co.",
+          "debit": 2500.00,
+          "credit": 0,
+          "against_account": "2110 - الموردين",
+          "reference_type": "Purchase Invoice",
+          "reference_name": "PINV-2024-00046",
+          "cost_center": "CC-EQUIPMENT-001"
+        },
+        {
+          "account": "5310 - أجور مؤقتة",
+          "account_en": "5310 - Temporary Labor",
+          "party_type": "Supplier",
+          "party": "SUP-00125",
+          "party_name": "مقاول العمالة المتعاقدة",
+          "party_name_en": "Contracted Labor Contractor",
+          "debit": 2500.00,
+          "credit": 0,
+          "against_account": "1110 - البنك",
+          "reference_type": null,
+          "reference_name": null,
+          "cost_center": "CC-LABOR-001"
+        },
+        {
+          "account": "1110 - النقدية - البنك الأهلي",
+          "account_en": "1110 - Cash - Al Ahli Bank",
+          "party_type": null,
+          "party": null,
+          "party_name": null,
+          "party_name_en": null,
+          "debit": 0,
+          "credit": 8000.00,
+          "against_account": "متعدد",
+          "reference_type": null,
+          "reference_name": null,
+          "cost_center": null
+        }
       ]
     },
     {
-      "id": "TECH002",
-      "name": {
-        "ar": "شركة التقنية المتقدمة للحلول الرقمية",
-        "en": "Advanced Technology Digital Solutions Co."
-      },
-      "location": {
-        "ar": "الرياض، المملكة العربية السعودية",
-        "en": "Riyadh, Kingdom of Saudi Arabia"
-      },
-      "logo": "https://via.placeholder.com/150x50/11998e/ffffff?text=AdvTech",
-      "registration": "CR-2023-TECH-458",
-      "vat_number": "310987654300003",
-      "stats": {
-        "net_profit": 8950000.50,
-        "profit_growth": 32.8,
-        "expenses": 12850000.75,
-        "expense_growth": 18.5,
-        "tax_paid": 1342500.08,
-        "fuel_efficiency": 0,
-        "efficiency_improvement": 0
-      },
-      "fleet_efficiency": [],
-      "expense_breakdown": [
-        {"category": {"ar": "الرواتب والأجور", "en": "Salaries & Wages"}, "amount": 8500000},
-        {"category": {"ar": "البنية التحتية IT", "en": "IT Infrastructure"}, "amount": 2350000},
-        {"category": {"ar": "التسويق", "en": "Marketing"}, "amount": 985000},
-        {"category": {"ar": "الإيجارات", "en": "Rent"}, "amount": 650000},
-        {"category": {"ar": "مصاريف إدارية", "en": "Admin Expenses"}, "amount": 365000}
-      ],
-      "monthly_trend": [
-        {"month": {"ar": "يناير", "en": "January"}, "profit": 685000, "expenses": 1050000},
-        {"month": {"ar": "فبراير", "en": "February"}, "profit": 720000, "expenses": 1080000},
-        {"month": {"ar": "مارس", "en": "March"}, "profit": 795000, "expenses": 1120000},
-        {"month": {"ar": "أبريل", "en": "April"}, "profit": 850000, "expenses": 1050000},
-        {"month": {"ar": "مايو", "en": "May"}, "profit": 735000, "expenses": 1090000},
-        {"month": {"ar": "يونيو", "en": "June"}, "profit": 680000, "expenses": 1140000},
-        {"month": {"ar": "يوليو", "en": "July"}, "profit": 920000, "expenses": 1000000},
-        {"month": {"ar": "أغسطس", "en": "August"}, "profit": 1050000, "expenses": 980000},
-        {"month": {"ar": "سبتمبر", "en": "September"}, "profit": 985000, "expenses": 1020000},
-        {"month": {"ar": "أكتوبر", "en": "October"}, "profit": 1150000, "expenses": 950000},
-        {"month": {"ar": "نوفمبر", "en": "November"}, "profit": 1280000, "expenses": 920000},
-        {"month": {"ar": "ديسمبر", "en": "December"}, "profit": 1100000, "expenses": 1000000}
-      ]
-    },
-    {
-      "id": "MED003",
-      "name": {
-        "ar": "مجمع سمتة الطبي المتخصص",
-        "en": "Samtah Specialized Medical Complex"
-      },
-      "location": {
-        "ar": "جازان، المملكة العربية السعودية",
-        "en": "Jazan, Kingdom of Saudi Arabia"
-      },
-      "logo": "https://via.placeholder.com/150x50/eb3349/ffffff?text=Samtah+Med",
-      "registration": "CR-2022-MED-789",
-      "vat_number": "310456789100003",
-      "stats": {
-        "net_profit": 15750000.25,
-        "profit_growth": 24.7,
-        "expenses": 28950000.80,
-        "expense_growth": 15.2,
-        "tax_paid": 2362500.04,
-        "fuel_efficiency": 0,
-        "efficiency_improvement": 0
-      },
-      "fleet_efficiency": [
-        {"truck": "AMB-001", "fuel_cost": 18500, "maintenance": 45000, "efficiency": 95, "status": "active"},
-        {"truck": "AMB-002", "fuel_cost": 17800, "maintenance": 38000, "efficiency": 93, "status": "active"},
-        {"truck": "VAN-001", "fuel_cost": 22000, "maintenance": 28000, "efficiency": 88, "status": "active"}
-      ],
-      "expense_breakdown": [
-        {"category": {"ar": "رواتب طبية", "en": "Medical Salaries"}, "amount": 18500000},
-        {"category": {"ar": "معدات طبية", "en": "Medical Equipment"}, "amount": 5850000},
-        {"category": {"ar": "أدوية ومستلزمات", "en": "Pharmaceuticals"}, "amount": 2950000},
-        {"category": {"ar": "صيانة وخدمات", "en": "Maintenance"}, "amount": 985000},
-        {"category": {"ar": "مصاريف إدارية", "en": "Administration"}, "amount": 665000}
-      ],
-      "monthly_trend": [
-        {"month": {"ar": "يناير", "en": "January"}, "profit": 1250000, "expenses": 2380000},
-        {"month": {"ar": "فبراير", "en": "February"}, "profit": 1180000, "expenses": 2450000},
-        {"month": {"ar": "مارس", "en": "March"}, "profit": 1320000, "expenses": 2400000},
-        {"month": {"ar": "أبريل", "en": "April"}, "profit": 1450000, "expenses": 2350000},
-        {"month": {"ar": "مايو", "en": "May"}, "profit": 1280000, "expenses": 2480000},
-        {"month": {"ar": "يونيو", "en": "June"}, "profit": 1350000, "expenses": 2420000},
-        {"month": {"ar": "يوليو", "en": "July"}, "profit": 1520000, "expenses": 2300000},
-        {"month": {"ar": "أغسطس", "en": "August"}, "profit": 1485000, "expenses": 2380000},
-        {"month": {"ar": "سبتمبر", "en": "September"}, "profit": 1265000, "expenses": 2500000},
-        {"month": {"ar": "أكتوبر", "en": "October"}, "profit": 1680000, "expenses": 2250000},
-        {"month": {"ar": "نوفمبر", "en": "November"}, "profit": 1550000, "expenses": 2320000},
-        {"month": {"ar": "ديسمبر", "en": "December"}, "profit": 1420000, "expenses": 2420000}
-      ]
-    },
-    {
-      "id": "CONST004",
-      "name": {
-        "ar": "مؤسسة البناء الحديث للمقاولات",
-        "en": "Modern Construction Contracting Est."
-      },
-      "location": {
-        "ar": "جدة، المملكة العربية السعودية",
-        "en": "Jeddah, Kingdom of Saudi Arabia"
-      },
-      "logo": "https://via.placeholder.com/150x50/fa709a/ffffff?text=ModernConst",
-      "registration": "CR-2021-CONST-321",
-      "vat_number": "310234567800003",
-      "stats": {
-        "net_profit": 22500000.00,
-        "profit_growth": 41.2,
-        "expenses": 45800000.50,
-        "expense_growth": 28.7,
-        "tax_paid": 3375000.00,
-        "fuel_efficiency": 72.5,
-        "efficiency_improvement": 8.9
-      },
-      "fleet_efficiency": [
-        {"truck": "DUMP-001", "fuel_cost": 125000, "maintenance": 85000, "efficiency": 68, "status": "active"},
-        {"truck": "DUMP-002", "fuel_cost": 118000, "maintenance": 92000, "efficiency": 71, "status": "active"},
-        {"truck": "CRANE-001", "fuel_cost": 185000, "maintenance": 125000, "efficiency": 65, "status": "maintenance"},
-        {"truck": "MIX-001", "fuel_cost": 95000, "maintenance": 78000, "efficiency": 75, "status": "active"},
-        {"truck": "MIX-002", "fuel_cost": 102000, "maintenance": 68000, "efficiency": 79, "status": "active"},
-        {"truck": "LOAD-001", "fuel_cost": 88000, "maintenance": 55000, "efficiency": 82, "status": "active"}
-      ],
-      "expense_breakdown": [
-        {"category": {"ar": "مواد البناء", "en": "Building Materials"}, "amount": 28500000},
-        {"category": {"ar": "رواتب العمال", "en": "Labor Wages"}, "amount": 9850000},
-        {"category": {"ar": "معدات ثقيلة", "en": "Heavy Equipment"}, "amount": 4250000},
-        {"category": {"ar": "وقود وصيانة", "en": "Fuel & Maintenance"}, "amount": 2150000},
-        {"category": {"ar": "إدارة المشاريع", "en": "Project Management"}, "amount": 1050000}
-      ],
-      "monthly_trend": [
-        {"month": {"ar": "يناير", "en": "January"}, "profit": 1650000, "expenses": 3750000},
-        {"month": {"ar": "فبراير", "en": "February"}, "profit": 1820000, "expenses": 3850000},
-        {"month": {"ar": "مارس", "en": "March"}, "profit": 2100000, "expenses": 3680000},
-        {"month": {"ar": "أبريل", "en": "April"}, "profit": 2350000, "expenses": 3500000},
-        {"month": {"ar": "مايو", "en": "May"}, "profit": 1980000, "expenses": 3920000},
-        {"month": {"ar": "يونيو", "en": "June"}, "profit": 1750000, "expenses": 4050000},
-        {"month": {"ar": "يوليو", "en": "July"}, "profit": 2550000, "expenses": 3450000},
-        {"month": {"ar": "أغسطس", "en": "August"}, "profit": 2685000, "expenses": 3380000},
-        {"month": {"ar": "سبتمبر", "en": "September"}, "profit": 2120000, "expenses": 3850000},
-        {"month": {"ar": "أكتوبر", "en": "October"}, "profit": 2950000, "expenses": 3250000},
-        {"month": {"ar": "نوفمبر", "en": "November"}, "profit": 2780000, "expenses": 3420000},
-        {"month": {"ar": "ديسمبر", "en": "December"}, "profit": 2265000, "expenses": 3700000}
-      ]
-    },
-    {
-      "id": "FOOD005",
-      "name": {
-        "ar": "شركة الذوق الرفيع للمطاعم والضيافة",
-        "en": "Fine Taste Restaurants & Hospitality Co."
-      },
-      "location": {
-        "ar": "الدمام، المملكة العربية السعودية",
-        "en": "Dammam, Kingdom of Saudi Arabia"
-      },
-      "logo": "https://via.placeholder.com/150x50/4facfe/ffffff?text=FineTaste",
-      "registration": "CR-2020-FOOD-654",
-      "vat_number": "310876543200003",
-      "stats": {
-        "net_profit": 6850000.75,
-        "profit_growth": 15.8,
-        "expenses": 18750000.25,
-        "expense_growth": 22.4,
-        "tax_paid": 1027500.11,
-        "fuel_efficiency": 0,
-        "efficiency_improvement": 0
-      },
-      "fleet_efficiency": [
-        {"truck": "DEL-001", "fuel_cost": 28500, "maintenance": 12000, "efficiency": 85, "status": "active"},
-        {"truck": "DEL-002", "fuel_cost": 32000, "maintenance": 15000, "efficiency": 81, "status": "active"},
-        {"truck": "DEL-003", "fuel_cost": 26800, "maintenance": 9500, "efficiency": 89, "status": "active"}
-      ],
-      "expense_breakdown": [
-        {"category": {"ar": "المواد الغذائية", "en": "Food Supplies"}, "amount": 9850000},
-        {"category": {"ar": "الرواتب", "en": "Salaries"}, "amount": 5250000},
-        {"category": {"ar": "الإيجارات", "en": "Rent"}, "amount": 2150000},
-        {"category": {"ar": "المرافق", "en": "Utilities"}, "amount": 985000},
-        {"category": {"ar": "التسويق", "en": "Marketing"}, "amount": 515000}
-      ],
-      "monthly_trend": [
-        {"month": {"ar": "يناير", "en": "January"}, "profit": 485000, "expenses": 1550000},
-        {"month": {"ar": "فبراير", "en": "February"}, "profit": 520000, "expenses": 1520000},
-        {"month": {"ar": "مارس", "en": "March"}, "profit": 595000, "expenses": 1480000},
-        {"month": {"ar": "أبريل", "en": "April"}, "profit": 650000, "expenses": 1450000},
-        {"month": {"ar": "مايو", "en": "May"}, "profit": 580000, "expenses": 1580000},
-        {"month": {"ar": "يونيو", "en": "June"}, "profit": 535000, "expenses": 1620000},
-        {"month": {"ar": "يوليو", "en": "July"}, "profit": 720000, "expenses": 1380000},
-        {"month": {"ar": "أغسطس", "en": "August"}, "profit": 685000, "expenses": 1420000},
-        {"month": {"ar": "سبتمبر", "en": "September"}, "profit": 515000, "expenses": 1650000},
-        {"month": {"ar": "أكتوبر", "en": "October"}, "profit": 780000, "expenses": 1350000},
-        {"month": {"ar": "نوفمبر", "en": "November"}, "profit": 745000, "expenses": 1400000},
-        {"month": {"ar": "ديسمبر", "en": "December"}, "profit": 850000, "expenses": 1350000}
+      "voucher_no": "JV-00245",
+      "posting_date": "2024-01-20",
+      "total_debit": 5000.00,
+      "total_credit": 5000.00,
+      "user_remark": "دفعة رواتب - نصف شهر يناير",
+      "entries": [
+        {
+          "account": "5110 - رواتب الموظفين",
+          "account_en": "5110 - Employee Salaries",
+          "party_type": "Employee",
+          "party": "EMP-00101",
+          "party_name": "محمد العمري",
+          "party_name_en": "Mohammed Al-Omari",
+          "debit": 2000.00,
+          "credit": 0,
+          "against_account": "2120 - الرواتب المستحقة",
+          "reference_type": "Salary Slip",
+          "reference_name": "SAL-2024-0101",
+          "cost_center": "CC-ADMIN-001"
+        },
+        {
+          "account": "5110 - رواتب الموظفين",
+          "account_en": "5110 - Employee Salaries",
+          "party_type": "Employee",
+          "party": "EMP-00102",
+          "party_name": "أحمد السعيد",
+          "party_name_en": "Ahmed Al-Saeed",
+          "debit": 1800.00,
+          "credit": 0,
+          "against_account": "2120 - الرواتب المستحقة",
+          "reference_type": "Salary Slip",
+          "reference_name": "SAL-2024-0102",
+          "cost_center": "CC-ADMIN-001"
+        },
+        {
+          "account": "5110 - رواتب الموظفين",
+          "account_en": "5110 - Employee Salaries",
+          "party_type": "Employee",
+          "party": "EMP-00103",
+          "party_name": "خالد الحربي",
+          "party_name_en": "Khalid Al-Harbi",
+          "debit": 1200.00,
+          "credit": 0,
+          "against_account": "2120 - الرواتب المستحقة",
+          "reference_type": "Salary Slip",
+          "reference_name": "SAL-2024-0103",
+          "cost_center": "CC-FIELD-001"
+        },
+        {
+          "account": "1110 - النقدية - البنك الأهلي",
+          "account_en": "1110 - Cash - Al Ahli Bank",
+          "party_type": null,
+          "party": null,
+          "party_name": null,
+          "party_name_en": null,
+          "debit": 0,
+          "credit": 5000.00,
+          "against_account": "متعدد",
+          "reference_type": null,
+          "reference_name": null,
+          "cost_center": null
+        }
       ]
     }
   ],
+  
+  "zatca_compliance": {
+    "status": "compliant",
+    "status_ar": "متوافق",
+    "last_submission": "2024-12-15T10:30:00Z",
+    "next_submission": "2025-01-15",
+    "total_invoices_submitted": 1248,
+    "invoices_approved": 1245,
+    "invoices_rejected": 3,
+    "compliance_rate": 99.76,
+    "phase_2_ready": true
+  },
+  
   "metadata": {
-    "version": "2.1.0",
-    "last_updated": "2026-01-27T14:30:00Z",
+    "report_generated": "2024-12-20T14:30:00Z",
+    "report_period": "Q4 2024",
     "currency": "SAR",
-    "fiscal_year": 2026,
-    "zatca_compliant": true,
-    "vat_rate": 0.15
+    "language": "ar",
+    "version": "1.0.0"
   }
 }
