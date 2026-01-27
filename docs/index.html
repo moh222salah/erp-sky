@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="نظام ذكاء الأعمال المالي - متوافق مع هيئة الزكاة والضريبة والجمارك">
-    <title>ERPNext GL - Financial Intelligence System</title>
+    <title>ERPNext GL Intelligence | لوحة القيادة المالية</title>
     
     <!-- External Dependencies -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" id="bootstrapCSS">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -35,13 +32,6 @@
             --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --border-radius-lg: 20px;
             --border-radius-xl: 28px;
-            
-            --font-primary: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
-        }
-
-        /* English Font Override */
-        [data-lang="en"] {
-            --font-primary: 'Inter', 'Segoe UI', sans-serif;
         }
 
         /* Dark Mode Variables */
@@ -54,29 +44,6 @@
             --border-color: #374151;
         }
 
-        [data-theme="dark"] body {
-            background: var(--bg-dark);
-            color: var(--text-primary);
-        }
-
-        [data-theme="dark"] .control-panel,
-        [data-theme="dark"] .stat-card,
-        [data-theme="dark"] .chart-container {
-            background: var(--card-bg);
-            color: var(--text-primary);
-        }
-
-        [data-theme="dark"] .filter-group select,
-        [data-theme="dark"] .filter-group input {
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        [data-theme="dark"] .data-table tbody tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
         /* ============================================
            GLOBAL STYLES
         ============================================ */
@@ -87,7 +54,7 @@
         }
 
         body {
-            font-family: var(--font-primary);
+            font-family: 'Segoe UI', 'Cairo', 'Tahoma', sans-serif;
             background: var(--bg-light);
             color: var(--text-primary, #1f2937);
             transition: var(--transition-smooth);
@@ -109,7 +76,7 @@
         }
 
         /* ============================================
-           HERO HEADER
+           HEADER SECTION
         ============================================ */
         .hero-header {
             background: var(--primary-gradient);
@@ -184,10 +151,6 @@
             color: #4b5563;
             margin-bottom: 8px;
             display: block;
-        }
-
-        [data-theme="dark"] .filter-group label {
-            color: var(--text-secondary);
         }
 
         .filter-group select,
@@ -270,10 +233,6 @@
             margin-bottom: 10px;
         }
 
-        [data-theme="dark"] .stat-label {
-            color: var(--text-secondary);
-        }
-
         .stat-value {
             font-size: 2.2rem;
             font-weight: 800;
@@ -308,10 +267,56 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition-smooth);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
         }
 
         .chart-container:hover {
             box-shadow: var(--card-shadow-hover);
+        }
+
+        /* Chart Canvas Wrapper - Fixed Heights */
+        .chart-container canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        /* Specific Chart Heights for Professional Layout */
+        #fleetChart {
+            max-height: 400px !important;
+            height: 400px !important;
+        }
+
+        #expensePieChart {
+            max-height: 400px !important;
+            height: 400px !important;
+        }
+
+        #trendChart {
+            max-height: 350px !important;
+            height: 350px !important;
+        }
+
+        /* Chart Container Sections - Responsive Heights */
+        .col-lg-8 .chart-container {
+            min-height: 500px;
+            max-height: 550px;
+        }
+
+        .col-lg-4 .chart-container {
+            min-height: 500px;
+            max-height: 550px;
+        }
+
+        .col-12 .chart-container {
+            min-height: 450px;
+            max-height: 500px;
+        }
+
+        /* Skeleton Chart - Matching Heights */
+        .skeleton-chart {
+            height: 400px;
+            width: 100%;
         }
 
         .chart-header {
@@ -323,10 +328,6 @@
             border-bottom: 2px solid #f3f4f6;
         }
 
-        [data-theme="dark"] .chart-header {
-            border-bottom-color: var(--border-color);
-        }
-
         .chart-title {
             font-size: 1.4rem;
             font-weight: 700;
@@ -334,10 +335,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-        }
-
-        [data-theme="dark"] .chart-title {
-            color: var(--text-primary);
         }
 
         .chart-title i {
@@ -353,7 +350,6 @@
             font-size: 0.85rem;
             transition: var(--transition-smooth);
             margin-left: 8px;
-            cursor: pointer;
         }
 
         .chart-actions button:hover {
@@ -409,10 +405,6 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        [data-theme="dark"] .data-table td {
-            border-bottom-color: var(--border-color);
-        }
-
         .data-table tbody tr {
             transition: var(--transition-smooth);
         }
@@ -447,42 +439,6 @@
         }
 
         /* ============================================
-           LANGUAGE TOGGLE
-        ============================================ */
-        .lang-toggle {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: white;
-            padding: 8px;
-            border-radius: 25px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            gap: 5px;
-        }
-
-        [data-theme="dark"] .lang-toggle {
-            background: var(--card-bg);
-        }
-
-        .lang-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-weight: 600;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            background: transparent;
-            color: #6b7280;
-        }
-
-        .lang-btn.active {
-            background: var(--primary-gradient);
-            color: white;
-        }
-
-        /* ============================================
            DARK MODE TOGGLE
         ============================================ */
         .theme-toggle {
@@ -509,27 +465,6 @@
         }
 
         /* ============================================
-           COMPANY LOGO
-        ============================================ */
-        .company-logo {
-            max-height: 60px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        /* ============================================
-           INFO BADGE
-        ============================================ */
-        .info-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        /* ============================================
            RESPONSIVE DESIGN
         ============================================ */
         @media (max-width: 768px) {
@@ -538,15 +473,50 @@
             .stat-card { margin-bottom: 20px; }
             .chart-header { flex-direction: column; gap: 15px; }
             .chart-actions { display: flex; flex-wrap: wrap; }
-            .lang-toggle {
-                top: 15px;
-                right: 15px;
+            
+            /* Mobile Chart Heights */
+            #fleetChart {
+                max-height: 300px !important;
+                height: 300px !important;
             }
-            .theme-toggle {
-                bottom: 15px;
-                left: 15px;
-                width: 50px;
-                height: 50px;
+            
+            #expensePieChart {
+                max-height: 300px !important;
+                height: 300px !important;
+            }
+            
+            #trendChart {
+                max-height: 250px !important;
+                height: 250px !important;
+            }
+            
+            .chart-container {
+                padding: 20px;
+            }
+            
+            .col-lg-8 .chart-container,
+            .col-lg-4 .chart-container,
+            .col-12 .chart-container {
+                min-height: auto;
+                max-height: none;
+            }
+        }
+        
+        /* Tablet Optimization */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #fleetChart {
+                max-height: 350px !important;
+                height: 350px !important;
+            }
+            
+            #expensePieChart {
+                max-height: 350px !important;
+                height: 350px !important;
+            }
+            
+            #trendChart {
+                max-height: 300px !important;
+                height: 300px !important;
             }
         }
 
@@ -564,34 +534,12 @@
 
         /* Print Styles */
         @media print {
-            .control-panel, .theme-toggle, .lang-toggle, .chart-actions { display: none !important; }
+            .control-panel, .theme-toggle, .chart-actions { display: none !important; }
             .chart-container { page-break-inside: avoid; }
-        }
-
-        /* Translation Helper */
-        [data-translate] {
-            transition: opacity 0.3s;
-        }
-
-        /* Smooth transitions for language switching */
-        * {
-            transition: font-family 0.3s ease;
         }
     </style>
 </head>
 <body>
-
-    <!-- ============================================
-         LANGUAGE TOGGLE
-    ============================================ -->
-    <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">
-            العربية
-        </button>
-        <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
-            English
-        </button>
-    </div>
 
     <!-- ============================================
          HERO HEADER
@@ -600,35 +548,21 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <img src="" alt="Company Logo" class="company-logo" id="companyLogo" style="display: none;">
                     <h1 class="text-white">
                         <i class="fas fa-chart-line me-3"></i>
-                        <span data-translate="page_title">نظام ERPNext GL المالي</span>
+                        نظام الذكاء المالي المتقدم
                     </h1>
-                    <p class="lead text-white mb-2">
-                        <strong><span data-translate="company_name" id="companyName">--</span></strong>
+                    <p class="lead text-white">
+                        شركة الطيبة للخدمات البيئية - المدينة المنورة
+                        <br>
+                        <small>متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)</small>
                     </p>
-                    <p class="text-white mb-2">
-                        <i class="fas fa-map-marker-alt me-2"></i>
-                        <span id="companyLocation">--</span>
-                    </p>
-                    <div class="info-badge">
-                        <i class="fas fa-file-contract me-2"></i>
-                        <span data-translate="label_registration">رقم السجل:</span> <span id="companyReg">--</span>
-                    </div>
-                    <div class="info-badge ms-2">
-                        <i class="fas fa-receipt me-2"></i>
-                        <span data-translate="label_vat">الرقم الضريبي:</span> <span id="companyVAT">--</span>
-                    </div>
                 </div>
                 <div class="col-lg-4 text-center">
                     <span class="zatca-badge">
                         <i class="fas fa-check-circle fa-lg"></i>
-                        <span data-translate="zatca_certified">معتمد من ZATCA</span>
+                        معتمد من ZATCA
                     </span>
-                    <p class="text-white mt-3 mb-0" style="font-size: 0.9rem;">
-                        <span data-translate="zatca_compliant">متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك</span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -642,37 +576,39 @@
             <div class="row align-items-end">
                 <div class="col-md-3">
                     <div class="filter-group">
-                        <label><i class="fas fa-building me-2"></i><span data-translate="label_company">الشركة</span></label>
-                        <select id="companyFilter" class="form-select" onchange="loadCompanyData()">
-                            <!-- Populated by JavaScript -->
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="filter-group">
-                        <label><i class="fas fa-calendar-alt me-2"></i><span data-translate="label_period">الفترة المالية</span></label>
+                        <label><i class="fas fa-calendar-alt me-2"></i>الفترة المالية</label>
                         <select id="periodFilter" class="form-select">
-                            <option value="q1-2026">Q1 2026</option>
-                            <option value="q2-2026">Q2 2026</option>
-                            <option value="q3-2026">Q3 2026</option>
-                            <option value="q4-2026" selected>Q4 2026</option>
-                            <option value="fy-2026">FY 2026</option>
+                            <option value="q1-2024">Q1 2024 (يناير - مارس)</option>
+                            <option value="q2-2024">Q2 2024 (أبريل - يونيو)</option>
+                            <option value="q3-2024">Q3 2024 (يوليو - سبتمبر)</option>
+                            <option value="q4-2024" selected>Q4 2024 (أكتوبر - ديسمبر)</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="filter-group">
-                        <label><i class="fas fa-filter me-2"></i><span data-translate="label_report_type">نوع التقرير</span></label>
-                        <select id="reportType" class="form-select">
-                            <option value="summary" selected data-translate="report_summary">ملخص تنفيذي</option>
-                            <option value="detailed" data-translate="report_detailed">تقرير تفصيلي</option>
-                            <option value="zatca" data-translate="report_zatca">تقرير ZATCA</option>
+                        <label><i class="fas fa-building me-2"></i>الفرع</label>
+                        <select id="branchFilter" class="form-select">
+                            <option value="all" selected>جميع الفروع</option>
+                            <option value="medina">المدينة المنورة</option>
+                            <option value="jeddah">جدة</option>
+                            <option value="riyadh">الرياض</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary w-100" onclick="applyFilters()" style="background: var(--primary-gradient); border: none; padding: 10px;">
-                        <i class="fas fa-sync-alt me-2"></i><span data-translate="btn_refresh">تحديث البيانات</span>
+                    <div class="filter-group">
+                        <label><i class="fas fa-filter me-2"></i>نوع التقرير</label>
+                        <select id="reportType" class="form-select">
+                            <option value="summary" selected>ملخص تنفيذي</option>
+                            <option value="detailed">تقرير تفصيلي</option>
+                            <option value="zatca">تقرير ZATCA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100" onclick="applyFilters()">
+                        <i class="fas fa-sync-alt me-2"></i>تحديث البيانات
                     </button>
                 </div>
             </div>
@@ -699,7 +635,7 @@
                     <div class="stat-icon success">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="stat-label" data-translate="stat_net_profit">صافي الربح (بعد الضريبة)</div>
+                    <div class="stat-label">صافي الربح (بعد الضريبة)</div>
                     <div class="stat-value text-success" id="netProfit">--</div>
                     <span class="stat-change positive" id="profitChange">
                         <i class="fas fa-arrow-up me-1"></i>--
@@ -713,7 +649,7 @@
                     <div class="stat-icon danger">
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
-                    <div class="stat-label" data-translate="stat_total_expenses">إجمالي المصروفات</div>
+                    <div class="stat-label">إجمالي المصروفات</div>
                     <div class="stat-value text-danger" id="totalExpenses">--</div>
                     <span class="stat-change negative" id="expensesChange">
                         <i class="fas fa-arrow-up me-1"></i>--
@@ -727,21 +663,21 @@
                     <div class="stat-icon primary">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <div class="stat-label" data-translate="stat_vat_tax">ضريبة القيمة المضافة (15%)</div>
+                    <div class="stat-label">ضريبة القيمة المضافة (15%)</div>
                     <div class="stat-value text-primary" id="taxPaid">--</div>
                     <span class="stat-change positive" id="taxChange">
-                        <i class="fas fa-check-circle me-1"></i><span data-translate="tax_paid">مدفوعة</span>
+                        <i class="fas fa-check-circle me-1"></i>مدفوعة
                     </span>
                 </div>
             </div>
 
             <!-- Fuel Efficiency Card -->
-            <div class="col-lg-3 col-md-6" id="fuelCard">
+            <div class="col-lg-3 col-md-6">
                 <div class="stat-card fade-in" style="animation-delay: 0.3s;">
                     <div class="stat-icon warning">
                         <i class="fas fa-gas-pump"></i>
                     </div>
-                    <div class="stat-label" data-translate="stat_fuel_efficiency">كفاءة استهلاك الوقود</div>
+                    <div class="stat-label">كفاءة استهلاك الوقود</div>
                     <div class="stat-value text-warning" id="fuelEfficiency">--</div>
                     <span class="stat-change positive" id="efficiencyChange">
                         <i class="fas fa-arrow-up me-1"></i>--
@@ -756,25 +692,25 @@
     ============================================ -->
     <div class="container mt-5">
         <div class="row">
-            <!-- Fleet/Expense Analysis Chart -->
+            <!-- Fleet Cost Analysis Chart -->
             <div class="col-lg-8">
                 <div class="chart-container">
                     <div class="chart-header">
                         <div class="chart-title">
-                            <i class="fas fa-chart-bar"></i>
-                            <span data-translate="chart_cost_analysis" id="mainChartTitle">تحليل التكاليف</span>
+                            <i class="fas fa-truck"></i>
+                            تحليل تكاليف الأسطول (ريال سعودي)
                         </div>
                         <div class="chart-actions">
-                            <button onclick="exportChart('mainChart', 'pdf')">
+                            <button onclick="exportChart('fleetChart', 'pdf')">
                                 <i class="fas fa-file-pdf me-1"></i>PDF
                             </button>
-                            <button onclick="exportChart('mainChart', 'excel')">
+                            <button onclick="exportChart('fleetChart', 'excel')">
                                 <i class="fas fa-file-excel me-1"></i>Excel
                             </button>
                         </div>
                     </div>
-                    <div id="mainChartSkeleton" class="skeleton skeleton-chart"></div>
-                    <canvas id="mainChart" style="display: none;"></canvas>
+                    <div id="fleetChartSkeleton" class="skeleton skeleton-chart"></div>
+                    <canvas id="fleetChart" style="display: none;"></canvas>
                 </div>
             </div>
 
@@ -784,7 +720,7 @@
                     <div class="chart-header">
                         <div class="chart-title">
                             <i class="fas fa-chart-pie"></i>
-                            <span data-translate="chart_expense_breakdown">توزيع المصروفات</span>
+                            توزيع المصروفات
                         </div>
                     </div>
                     <div id="pieChartSkeleton" class="skeleton skeleton-chart"></div>
@@ -800,11 +736,11 @@
                     <div class="chart-header">
                         <div class="chart-title">
                             <i class="fas fa-chart-area"></i>
-                            <span data-translate="chart_monthly_trend">اتجاه الربحية الشهرية (2026)</span>
+                            اتجاه الربحية الشهرية (2024)
                         </div>
                         <div class="chart-actions">
                             <button onclick="toggleChartType('trendChart')">
-                                <i class="fas fa-exchange-alt me-1"></i><span data-translate="btn_toggle_type">تبديل النوع</span>
+                                <i class="fas fa-exchange-alt me-1"></i>تبديل النوع
                             </button>
                         </div>
                     </div>
@@ -816,18 +752,18 @@
     </div>
 
     <!-- ============================================
-         DATA TABLE (Fleet/Vehicle Details)
+         DATA TABLE (Fleet Details)
     ============================================ -->
-    <div class="container mt-5 mb-5" id="fleetTableContainer">
+    <div class="container mt-5 mb-5">
         <div class="chart-container">
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fas fa-table"></i>
-                    <span data-translate="table_fleet_details" id="tableTitle">تفاصيل أداء المركبات</span>
+                    تفاصيل أداء الشاحنات
                 </div>
                 <div class="chart-actions">
                     <button onclick="exportTable()">
-                        <i class="fas fa-download me-1"></i><span data-translate="btn_export_table">تصدير الجدول</span>
+                        <i class="fas fa-download me-1"></i>تصدير الجدول
                     </button>
                 </div>
             </div>
@@ -835,11 +771,11 @@
                 <table class="data-table" id="fleetTable">
                     <thead>
                         <tr>
-                            <th data-translate="th_vehicle_id">رقم المركبة</th>
-                            <th data-translate="th_fuel_cost">تكلفة الوقود (ر.س)</th>
-                            <th data-translate="th_maintenance">الصيانة (ر.س)</th>
-                            <th data-translate="th_efficiency">الكفاءة (%)</th>
-                            <th data-translate="th_status">الحالة</th>
+                            <th>رقم الشاحنة</th>
+                            <th>تكلفة الوقود (ر.س)</th>
+                            <th>الصيانة (ر.س)</th>
+                            <th>الكفاءة (%)</th>
+                            <th>الحالة</th>
                         </tr>
                     </thead>
                     <tbody id="fleetTableBody">
@@ -865,114 +801,16 @@
         // GLOBAL STATE
         // ====================================
         let appData = null;
-        let currentCompany = null;
-        let currentLang = 'ar';
         let chartInstances = {};
         let isDarkMode = false;
-
-        // ====================================
-        // TRANSLATIONS
-        // ====================================
-        const translations = {
-            ar: {
-                page_title: 'نظام ERPNext GL المالي',
-                company_name: 'اسم الشركة',
-                zatca_compliant: 'متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك',
-                zatca_certified: 'معتمد من ZATCA',
-                label_company: 'الشركة',
-                label_period: 'الفترة المالية',
-                label_report_type: 'نوع التقرير',
-                label_registration: 'رقم السجل',
-                label_vat: 'الرقم الضريبي',
-                report_summary: 'ملخص تنفيذي',
-                report_detailed: 'تقرير تفصيلي',
-                report_zatca: 'تقرير ZATCA',
-                btn_refresh: 'تحديث البيانات',
-                stat_net_profit: 'صافي الربح (بعد الضريبة)',
-                stat_total_expenses: 'إجمالي المصروفات',
-                stat_vat_tax: 'ضريبة القيمة المضافة (15%)',
-                stat_fuel_efficiency: 'كفاءة استهلاك الوقود',
-                tax_paid: 'مدفوعة',
-                chart_cost_analysis: 'تحليل التكاليف',
-                chart_expense_breakdown: 'توزيع المصروفات',
-                chart_monthly_trend: 'اتجاه الربحية الشهرية (2026)',
-                btn_toggle_type: 'تبديل النوع',
-                table_fleet_details: 'تفاصيل أداء المركبات',
-                btn_export_table: 'تصدير الجدول',
-                th_vehicle_id: 'رقم المركبة',
-                th_fuel_cost: 'تكلفة الوقود (ر.س)',
-                th_maintenance: 'الصيانة (ر.س)',
-                th_efficiency: 'الكفاءة (%)',
-                th_status: 'الحالة',
-                status_active: 'نشط',
-                status_maintenance: 'صيانة',
-                loading_data: 'جاري تحميل البيانات...',
-                data_updated: 'تم تحديث البيانات بنجاح',
-                exporting_pdf: 'جاري تصدير PDF...',
-                exporting_excel: 'جاري تصدير Excel...',
-                table_exported: 'تم تصدير الجدول بنجاح',
-                chart_toggled: 'تم تبديل نوع الرسم البياني'
-            },
-            en: {
-                page_title: 'ERPNext GL Financial System',
-                company_name: 'Company Name',
-                zatca_compliant: '100% Compliant with ZATCA Requirements',
-                zatca_certified: 'ZATCA Certified',
-                label_company: 'Company',
-                label_period: 'Financial Period',
-                label_report_type: 'Report Type',
-                label_registration: 'Registration No',
-                label_vat: 'VAT Number',
-                report_summary: 'Executive Summary',
-                report_detailed: 'Detailed Report',
-                report_zatca: 'ZATCA Report',
-                btn_refresh: 'Refresh Data',
-                stat_net_profit: 'Net Profit (After Tax)',
-                stat_total_expenses: 'Total Expenses',
-                stat_vat_tax: 'Value Added Tax (15%)',
-                stat_fuel_efficiency: 'Fuel Efficiency',
-                tax_paid: 'Paid',
-                chart_cost_analysis: 'Cost Analysis',
-                chart_expense_breakdown: 'Expense Breakdown',
-                chart_monthly_trend: 'Monthly Profitability Trend (2026)',
-                btn_toggle_type: 'Toggle Type',
-                table_fleet_details: 'Vehicle Performance Details',
-                btn_export_table: 'Export Table',
-                th_vehicle_id: 'Vehicle ID',
-                th_fuel_cost: 'Fuel Cost (SAR)',
-                th_maintenance: 'Maintenance (SAR)',
-                th_efficiency: 'Efficiency (%)',
-                th_status: 'Status',
-                status_active: 'Active',
-                status_maintenance: 'Maintenance',
-                loading_data: 'Loading data...',
-                data_updated: 'Data updated successfully',
-                exporting_pdf: 'Exporting PDF...',
-                exporting_excel: 'Exporting Excel...',
-                table_exported: 'Table exported successfully',
-                chart_toggled: 'Chart type toggled'
-            }
-        };
 
         // ====================================
         // INITIALIZATION
         // ====================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                toggleDarkMode();
-            }
-            
-            // Check for saved language preference
-            const savedLang = localStorage.getItem('language');
-            if (savedLang && savedLang !== currentLang) {
-                switchLanguage(savedLang);
-            }
-            
             setTimeout(() => {
                 loadDemoData();
-            }, 800);
+            }, 800); // Simulate loading delay
         });
 
         // ====================================
@@ -980,89 +818,22 @@
         // ====================================
         async function loadDemoData() {
             try {
-                const response = await fetch('./demo_ledger.json');
+                const response = await fetch('./data/demo_ledger.json');
                 appData = await response.json();
                 
-                // Populate company selector
-                populateCompanySelector();
+                // Hide skeletons and show content
+                hideSkeletons();
                 
-                // Load first company by default
-                if (appData.companies.length > 0) {
-                    loadCompanyData();
-                }
+                // Update UI components
+                updateStatCards(appData.stats);
+                renderFleetChart(appData.fleet_efficiency);
+                renderExpensePieChart(appData.expense_breakdown);
+                renderTrendChart(appData.monthly_trend);
+                populateFleetTable(appData.fleet_efficiency);
                 
             } catch (error) {
                 console.error('Error loading data:', error);
-                showErrorNotification(
-                    currentLang === 'ar' 
-                        ? 'فشل تحميل البيانات. يرجى تحديث الصفحة.' 
-                        : 'Failed to load data. Please refresh the page.'
-                );
-            }
-        }
-
-        // ====================================
-        // POPULATE COMPANY SELECTOR
-        // ====================================
-        function populateCompanySelector() {
-            const selector = document.getElementById('companyFilter');
-            selector.innerHTML = '';
-            
-            appData.companies.forEach((company, index) => {
-                const option = document.createElement('option');
-                option.value = company.id;
-                option.textContent = company.name[currentLang];
-                if (index === 0) option.selected = true;
-                selector.appendChild(option);
-            });
-        }
-
-        // ====================================
-        // LOAD COMPANY DATA
-        // ====================================
-        function loadCompanyData() {
-            const companyId = document.getElementById('companyFilter').value;
-            currentCompany = appData.companies.find(c => c.id === companyId);
-            
-            if (!currentCompany) return;
-            
-            // Hide skeletons and show content
-            hideSkeletons();
-            
-            // Update company information
-            document.getElementById('companyName').textContent = currentCompany.name[currentLang];
-            document.getElementById('companyLocation').textContent = currentCompany.location[currentLang];
-            document.getElementById('companyReg').textContent = currentCompany.registration;
-            document.getElementById('companyVAT').textContent = currentCompany.vat_number;
-            
-            // Update company logo
-            const logoImg = document.getElementById('companyLogo');
-            if (currentCompany.logo) {
-                logoImg.src = currentCompany.logo;
-                logoImg.style.display = 'block';
-            } else {
-                logoImg.style.display = 'none';
-            }
-            
-            // Update UI components
-            updateStatCards(currentCompany.stats);
-            renderMainChart(currentCompany);
-            renderExpensePieChart(currentCompany.expense_breakdown);
-            renderTrendChart(currentCompany.monthly_trend);
-            
-            // Show/hide fleet table based on company type
-            if (currentCompany.fleet_efficiency.length > 0) {
-                document.getElementById('fleetTableContainer').style.display = 'block';
-                populateFleetTable(currentCompany.fleet_efficiency);
-            } else {
-                document.getElementById('fleetTableContainer').style.display = 'none';
-            }
-            
-            // Update fuel card visibility
-            if (currentCompany.stats.fuel_efficiency > 0) {
-                document.getElementById('fuelCard').style.display = 'block';
-            } else {
-                document.getElementById('fuelCard').style.display = 'none';
+                showErrorNotification('فشل تحميل البيانات. يرجى تحديث الصفحة.');
             }
         }
 
@@ -1073,8 +844,8 @@
             document.getElementById('loadingCards').style.display = 'none';
             document.getElementById('statsCards').style.display = 'flex';
             
-            document.getElementById('mainChartSkeleton').style.display = 'none';
-            document.getElementById('mainChart').style.display = 'block';
+            document.getElementById('fleetChartSkeleton').style.display = 'none';
+            document.getElementById('fleetChart').style.display = 'block';
             
             document.getElementById('pieChartSkeleton').style.display = 'none';
             document.getElementById('expensePieChart').style.display = 'block';
@@ -1087,50 +858,42 @@
         // UPDATE STAT CARDS
         // ====================================
         function updateStatCards(stats) {
-            document.getElementById('netProfit').innerText = formatCurrency(stats.net_profit);
+            // Net Profit
+            document.getElementById('netProfit').innerText = formatArabicCurrency(stats.net_profit);
             document.getElementById('profitChange').innerHTML = 
-                `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.profit_growth)}%`;
+                `<i class="fas fa-arrow-up me-1"></i>+${stats.profit_growth}%`;
             
-            document.getElementById('totalExpenses').innerText = formatCurrency(stats.expenses);
+            // Total Expenses
+            document.getElementById('totalExpenses').innerText = formatArabicCurrency(stats.expenses);
             document.getElementById('expensesChange').innerHTML = 
-                `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.expense_growth)}%`;
+                `<i class="fas fa-arrow-up me-1"></i>+${stats.expense_growth}%`;
             
-            document.getElementById('taxPaid').innerText = formatCurrency(stats.tax_paid);
+            // VAT Tax
+            document.getElementById('taxPaid').innerText = formatArabicCurrency(stats.tax_paid);
             
-            if (stats.fuel_efficiency > 0) {
-                document.getElementById('fuelEfficiency').innerText = `${formatNumber(stats.fuel_efficiency)}%`;
-                document.getElementById('efficiencyChange').innerHTML = 
-                    `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.efficiency_improvement)}%`;
-            }
+            // Fuel Efficiency
+            document.getElementById('fuelEfficiency').innerText = `${stats.fuel_efficiency}%`;
+            document.getElementById('efficiencyChange').innerHTML = 
+                `<i class="fas fa-arrow-up me-1"></i>+${stats.efficiency_improvement}%`;
         }
 
         // ====================================
-        // RENDER MAIN CHART
+        // RENDER FLEET COST CHART (Bar)
         // ====================================
-        function renderMainChart(company) {
-            const ctx = document.getElementById('mainChart').getContext('2d');
+        function renderFleetChart(fleetData) {
+            const ctx = document.getElementById('fleetChart').getContext('2d');
             
-            if (chartInstances.mainChart) {
-                chartInstances.mainChart.destroy();
+            if (chartInstances.fleetChart) {
+                chartInstances.fleetChart.destroy();
             }
             
-            let chartData, chartLabel;
-            
-            if (company.fleet_efficiency.length > 0) {
-                chartData = company.fleet_efficiency.map(item => item.fuel_cost);
-                chartLabel = company.fleet_efficiency.map(item => item.truck);
-            } else {
-                chartData = company.expense_breakdown.map(item => item.amount);
-                chartLabel = company.expense_breakdown.map(item => item.category[currentLang]);
-            }
-            
-            chartInstances.mainChart = new Chart(ctx, {
+            chartInstances.fleetChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: chartLabel,
+                    labels: fleetData.map(item => item.truck),
                     datasets: [{
-                        label: currentLang === 'ar' ? 'التكلفة (ر.س)' : 'Cost (SAR)',
-                        data: chartData,
+                        label: 'تكلفة الوقود (ر.س)',
+                        data: fleetData.map(item => item.fuel_cost),
                         backgroundColor: 'rgba(102, 126, 234, 0.8)',
                         borderColor: 'rgba(102, 126, 234, 1)',
                         borderWidth: 2,
@@ -1140,7 +903,8 @@
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
                     plugins: {
                         legend: { display: false },
                         tooltip: {
@@ -1149,16 +913,9 @@
                             bodyColor: '#fff',
                             padding: 12,
                             cornerRadius: 8,
-                            titleFont: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            bodyFont: {
-                                size: 13
-                            },
                             callbacks: {
                                 label: function(context) {
-                                    return `${currentLang === 'ar' ? 'التكلفة' : 'Cost'}: ${formatCurrency(context.parsed.y)}`;
+                                    return `التكلفة: ${formatArabicCurrency(context.parsed.y)}`;
                                 }
                             }
                         }
@@ -1168,22 +925,14 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return formatNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
-                                },
-                                font: {
-                                    size: 12
+                                    return formatArabicNumber(value) + ' ر.س';
                                 }
                             },
                             grid: {
-                                color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
+                                color: 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
-                            ticks: {
-                                font: {
-                                    size: 12
-                                }
-                            },
                             grid: {
                                 display: false
                             }
@@ -1207,60 +956,47 @@
                 chartInstances.expensePieChart.destroy();
             }
             
-            const colors = [
-                'rgba(102, 126, 234, 0.8)',
-                'rgba(235, 51, 73, 0.8)',
-                'rgba(250, 112, 154, 0.8)',
-                'rgba(17, 153, 142, 0.8)',
-                'rgba(79, 172, 254, 0.8)',
-                'rgba(254, 225, 64, 0.8)'
-            ];
-            
             chartInstances.expensePieChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: expenseData.map(item => item.category[currentLang]),
+                    labels: expenseData.map(item => item.category),
                     datasets: [{
                         data: expenseData.map(item => item.amount),
-                        backgroundColor: colors.slice(0, expenseData.length),
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.8)',
+                            'rgba(235, 51, 73, 0.8)',
+                            'rgba(250, 112, 154, 0.8)',
+                            'rgba(17, 153, 142, 0.8)',
+                            'rgba(79, 172, 254, 0.8)'
+                        ],
                         borderWidth: 3,
-                        borderColor: isDarkMode ? '#252836' : '#fff',
+                        borderColor: '#fff',
                         hoverOffset: 15
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
                                 padding: 15,
-                                font: { 
-                                    size: 13,
-                                    family: currentLang === 'ar' ? 'Cairo' : 'Inter'
-                                },
-                                color: isDarkMode ? '#e5e7eb' : '#1f2937'
+                                font: { size: 13 }
                             }
                         },
                         tooltip: {
                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             padding: 12,
                             cornerRadius: 8,
-                            titleFont: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            bodyFont: {
-                                size: 13
-                            },
                             callbacks: {
                                 label: function(context) {
                                     const label = context.label || '';
-                                    const value = formatCurrency(context.parsed);
+                                    const value = formatArabicCurrency(context.parsed);
                                     const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                     const percentage = ((context.parsed / total) * 100).toFixed(1);
-                                    return `${label}: ${value} (${formatNumber(parseFloat(percentage))}%)`;
+                                    return `${label}: ${value} (${percentage}%)`;
                                 }
                             }
                         }
@@ -1274,7 +1010,7 @@
         }
 
         // ====================================
-        // RENDER MONTHLY TREND CHART
+        // RENDER MONTHLY TREND CHART (Line)
         // ====================================
         function renderTrendChart(trendData) {
             const ctx = document.getElementById('trendChart').getContext('2d');
@@ -1286,9 +1022,9 @@
             chartInstances.trendChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: trendData.map(item => item.month[currentLang]),
+                    labels: trendData.map(item => item.month),
                     datasets: [{
-                        label: currentLang === 'ar' ? 'صافي الربح' : 'Net Profit',
+                        label: 'صافي الربح',
                         data: trendData.map(item => item.profit),
                         backgroundColor: 'rgba(17, 153, 142, 0.2)',
                         borderColor: 'rgba(17, 153, 142, 1)',
@@ -1298,29 +1034,23 @@
                         pointRadius: 6,
                         pointHoverRadius: 8,
                         pointBackgroundColor: '#11998e',
-                        pointBorderColor: isDarkMode ? '#252836' : '#fff',
+                        pointBorderColor: '#fff',
                         pointBorderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2.5,
                     plugins: {
                         legend: { display: false },
                         tooltip: {
                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             padding: 12,
                             cornerRadius: 8,
-                            titleFont: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            bodyFont: {
-                                size: 13
-                            },
                             callbacks: {
                                 label: function(context) {
-                                    return `${currentLang === 'ar' ? 'الربح' : 'Profit'}: ${formatCurrency(context.parsed.y)}`;
+                                    return `الربح: ${formatArabicCurrency(context.parsed.y)}`;
                                 }
                             }
                         }
@@ -1330,24 +1060,14 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return formatNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
-                                },
-                                font: {
-                                    size: 12
-                                },
-                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                                    return formatArabicNumber(value) + ' ر.س';
+                                }
                             },
                             grid: {
-                                color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
+                                color: 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
-                            ticks: {
-                                font: {
-                                    size: 12
-                                },
-                                color: isDarkMode ? '#9ca3af' : '#6b7280'
-                            },
                             grid: {
                                 display: false
                             }
@@ -1369,23 +1089,19 @@
             tbody.innerHTML = '';
             
             fleetData.forEach(item => {
-                const statusText = item.status === 'active' 
-                    ? translations[currentLang].status_active 
-                    : translations[currentLang].status_maintenance;
-                
                 const row = `
                     <tr>
                         <td><strong>${item.truck}</strong></td>
-                        <td>${formatCurrency(item.fuel_cost)}</td>
-                        <td>${formatCurrency(item.maintenance || 0)}</td>
+                        <td>${formatArabicCurrency(item.fuel_cost)}</td>
+                        <td>${formatArabicCurrency(item.maintenance || 0)}</td>
                         <td>
-                            <span style="color: ${item.efficiency >= 85 ? '#11998e' : '#eb3349'}; font-weight: 600;">
-                                ${formatNumber(item.efficiency)}%
+                            <span style="color: ${item.efficiency >= 85 ? '#11998e' : '#eb3349'};">
+                                ${item.efficiency}%
                             </span>
                         </td>
                         <td>
                             <span class="badge ${item.status === 'active' ? 'bg-success' : 'bg-warning'}">
-                                ${statusText}
+                                ${item.status === 'active' ? 'نشط' : 'صيانة'}
                             </span>
                         </td>
                     </tr>
@@ -1395,74 +1111,27 @@
         }
 
         // ====================================
-        // LANGUAGE SWITCHING
-        // ====================================
-        function switchLanguage(lang) {
-            currentLang = lang;
-            
-            // Save language preference
-            localStorage.setItem('language', lang);
-            
-            // Update HTML attributes
-            document.documentElement.setAttribute('lang', lang);
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('data-lang', lang);
-            
-            // Update Bootstrap CSS
-            const bootstrapCSS = document.getElementById('bootstrapCSS');
-            if (lang === 'ar') {
-                bootstrapCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css';
-            } else {
-                bootstrapCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css';
-            }
-            
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-            
-            // Translate all text
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            // Reload company selector and data
-            if (appData) {
-                populateCompanySelector();
-                loadCompanyData();
-            }
-        }
-
-        // ====================================
         // UTILITY FUNCTIONS
         // ====================================
-        function formatCurrency(amount) {
-            const formatted = new Intl.NumberFormat(currentLang === 'ar' ? 'ar-SA' : 'en-US', {
+        function formatArabicCurrency(amount) {
+            return new Intl.NumberFormat('ar-SA', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
-            }).format(amount);
-            
-            return formatted + (currentLang === 'ar' ? ' ر.س' : ' SAR');
+            }).format(amount) + ' ر.س';
         }
 
-        function formatNumber(number) {
-            return new Intl.NumberFormat(currentLang === 'ar' ? 'ar-SA' : 'en-US', {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 2
-            }).format(number);
+        function formatArabicNumber(number) {
+            return new Intl.NumberFormat('ar-SA').format(number);
         }
 
         // ====================================
         // FILTER FUNCTIONS
         // ====================================
         function applyFilters() {
-            showNotification(translations[currentLang].loading_data, 'info');
+            showNotification('جاري تحديث البيانات...', 'info');
             setTimeout(() => {
-                loadCompanyData();
-                showNotification(translations[currentLang].data_updated, 'success');
+                loadDemoData();
+                showNotification('تم تحديث البيانات بنجاح', 'success');
             }, 1000);
         }
 
@@ -1473,9 +1142,10 @@
             if (format === 'pdf') {
                 const element = document.querySelector('.chart-container');
                 html2pdf().from(element).save(`${chartId}-report.pdf`);
-                showNotification(translations[currentLang].exporting_pdf, 'info');
+                showNotification('جاري تصدير PDF...', 'info');
             } else if (format === 'excel') {
-                showNotification(translations[currentLang].exporting_excel, 'info');
+                // Simplified CSV export
+                showNotification('جاري تصدير Excel...', 'info');
             }
         }
 
@@ -1483,23 +1153,26 @@
             const table = document.getElementById('fleetTable');
             let csv = [];
             
+            // Headers
             const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent);
             csv.push(headers.join(','));
             
+            // Rows
             const rows = table.querySelectorAll('tbody tr');
             rows.forEach(row => {
-                const cols = Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim().replace(/,/g, ''));
+                const cols = Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim());
                 csv.push(cols.join(','));
             });
             
-            const csvContent = '\uFEFF' + csv.join('\n'); // Add BOM for UTF-8
+            // Download
+            const csvContent = csv.join('\n');
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `fleet-data-${currentCompany.id}.csv`;
+            link.download = 'fleet-data.csv';
             link.click();
             
-            showNotification(translations[currentLang].table_exported, 'success');
+            showNotification('تم تصدير الجدول بنجاح', 'success');
         }
 
         // ====================================
@@ -1509,16 +1182,6 @@
             isDarkMode = !isDarkMode;
             document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
             document.getElementById('themeIcon').className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
-            
-            // Save theme preference
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            
-            // Reload charts to update colors
-            if (currentCompany) {
-                renderMainChart(currentCompany);
-                renderExpensePieChart(currentCompany.expense_breakdown);
-                renderTrendChart(currentCompany.monthly_trend);
-            }
         }
 
         // ====================================
@@ -1530,7 +1193,7 @@
             
             chart.config.type = chart.config.type === 'line' ? 'bar' : 'line';
             chart.update();
-            showNotification(translations[currentLang].chart_toggled, 'success');
+            showNotification('تم تبديل نوع الرسم البياني', 'success');
         }
 
         // ====================================
@@ -1544,18 +1207,11 @@
                 warning: '#fa709a'
             };
             
-            const icons = {
-                success: 'fa-check-circle',
-                error: 'fa-exclamation-circle',
-                info: 'fa-info-circle',
-                warning: 'fa-exclamation-triangle'
-            };
-            
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
                 top: 20px;
-                ${currentLang === 'ar' ? 'right' : 'left'}: 20px;
+                right: 20px;
                 background: ${colors[type]};
                 color: white;
                 padding: 15px 25px;
@@ -1563,47 +1219,18 @@
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
                 z-index: 10000;
                 animation: slideIn 0.5s ease;
-                font-family: ${currentLang === 'ar' ? 'Cairo' : 'Inter'};
-                max-width: 350px;
             `;
-            notification.innerHTML = `<i class="fas ${icons[type]} me-2"></i>${message}`;
+            notification.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.5s ease';
-                setTimeout(() => notification.remove(), 500);
+                notification.remove();
             }, 3000);
         }
 
         function showErrorNotification(message) {
             showNotification(message, 'error');
         }
-
-        // Add CSS animations for notifications
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from {
-                    opacity: 0;
-                    transform: translateX(${currentLang === 'ar' ? '100px' : '-100px'});
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-            @keyframes slideOut {
-                from {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateX(${currentLang === 'ar' ? '100px' : '-100px'});
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 
     <!-- Bootstrap JS -->
@@ -1611,3 +1238,4 @@
 
 </body>
 </html>
+
