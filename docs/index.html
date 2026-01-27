@@ -962,6 +962,68 @@
         </div>
     </div>
 
+    
+    <!-- ============================================
+         DATA TABLE
+    ============================================ -->
+    <div class="container mt-4 mb-5">
+        <div class="chart-container">
+            <div class="chart-header">
+                <div class="chart-title">
+                    <i class="fas fa-table"></i>
+                    <span data-ar="تفاصيل أداء الشاحنات" data-en="Fleet Performance Details">تفاصيل أداء الشاحنات</span>
+                </div>
+                <div class="chart-actions">
+                    <button class="chart-btn" onclick="exportTable()">
+                        <i class="fas fa-download"></i>
+                        <span data-ar="تصدير الجدول" data-en="Export Table">تصدير الجدول</span>
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="fleetTable">
+                    <thead>
+                        <tr>
+                            <th><span data-ar="رقم الشاحنة" data-en="Truck #">رقم الشاحنة</span></th>
+                            <th><span data-ar="تكلفة الوقود (ر.س)" data-en="Fuel Cost (SAR)">تكلفة الوقود (ر.س)</span></th>
+                            <th><span data-ar="الصيانة (ر.س)" data-en="Maintenance (SAR)">الصيانة (ر.س)</span></th>
+                            <th><span data-ar="الكفاءة (%)" data-en="Efficiency (%)">الكفاءة (%)</span></th>
+                            <th><span data-ar="الحالة" data-en="Status">الحالة</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="fleetTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Monthly Trend -->
+        <div class="row g-3 mt-2">
+            <div class="col-12">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-area"></i>
+                            <span data-ar="اتجاه الربحية الشهرية (2024)" data-en="Monthly Profitability Trend (2024)">اتجاه الربحية الشهرية (2024)</span>
+                        </div>
+                        <div class="chart-actions">
+                            <button class="chart-btn" onclick="toggleChartType('trendChart')">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span data-ar="تبديل النوع" data-en="Toggle Type">تبديل النوع</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="trendChartSkeleton" class="skeleton skeleton-chart"></div>
+                    <canvas id="trendChart" style="display: none;"></canvas>
+                </div>
+            </div>
+        </div>
+</div>
+    
+
     <!-- ============================================
          CHARTS SECTION
     ============================================ -->
@@ -1004,64 +1066,6 @@
             </div>
         </div>
 
-        <!-- Monthly Trend -->
-        <div class="row g-3 mt-2">
-            <div class="col-12">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <div class="chart-title">
-                            <i class="fas fa-chart-area"></i>
-                            <span data-ar="اتجاه الربحية الشهرية (2024)" data-en="Monthly Profitability Trend (2024)">اتجاه الربحية الشهرية (2024)</span>
-                        </div>
-                        <div class="chart-actions">
-                            <button class="chart-btn" onclick="toggleChartType('trendChart')">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span data-ar="تبديل النوع" data-en="Toggle Type">تبديل النوع</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="trendChartSkeleton" class="skeleton skeleton-chart"></div>
-                    <canvas id="trendChart" style="display: none;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================
-         DATA TABLE
-    ============================================ -->
-    <div class="container mt-4 mb-5">
-        <div class="chart-container">
-            <div class="chart-header">
-                <div class="chart-title">
-                    <i class="fas fa-table"></i>
-                    <span data-ar="تفاصيل أداء الشاحنات" data-en="Fleet Performance Details">تفاصيل أداء الشاحنات</span>
-                </div>
-                <div class="chart-actions">
-                    <button class="chart-btn" onclick="exportTable()">
-                        <i class="fas fa-download"></i>
-                        <span data-ar="تصدير الجدول" data-en="Export Table">تصدير الجدول</span>
-                    </button>
-                </div>
-            </div>
-            <div class="table-container">
-                <table class="data-table" id="fleetTable">
-                    <thead>
-                        <tr>
-                            <th><span data-ar="رقم الشاحنة" data-en="Truck #">رقم الشاحنة</span></th>
-                            <th><span data-ar="تكلفة الوقود (ر.س)" data-en="Fuel Cost (SAR)">تكلفة الوقود (ر.س)</span></th>
-                            <th><span data-ar="الصيانة (ر.س)" data-en="Maintenance (SAR)">الصيانة (ر.س)</span></th>
-                            <th><span data-ar="الكفاءة (%)" data-en="Efficiency (%)">الكفاءة (%)</span></th>
-                            <th><span data-ar="الحالة" data-en="Status">الحالة</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="fleetTableBody">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
     <!-- ============================================
          THEME TOGGLE
