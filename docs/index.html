@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="نظام ذكاء الأعمال المالي - متوافق مع هيئة الزكاة والضريبة والجمارك">
-    <title>ERPNext GL Intelligence | لوحة القيادة المالية</title>
+    <title>ERPNext GL </title>
     
     <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
@@ -459,10 +459,10 @@
                 <div class="col-lg-8">
                     <h1 class="text-white">
                         <i class="fas fa-chart-line me-3"></i>
-                        نظام الذكاء المالي المتقدم
+                        ERPNext GL System 
                     </h1>
                     <p class="lead text-white">
-                        شركة الطيبة للخدمات البيئية - المدينة المنورة
+                        شركة ســـــــــــ للخدمات البيئية - المدينة المنورة
                         <br>
                         <small>متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)</small>
                     </p>
@@ -487,10 +487,10 @@
                     <div class="filter-group">
                         <label><i class="fas fa-calendar-alt me-2"></i>الفترة المالية</label>
                         <select id="periodFilter" class="form-select">
-                            <option value="q1-2024">Q1 2024 (يناير - مارس)</option>
-                            <option value="q2-2024">Q2 2024 (أبريل - يونيو)</option>
-                            <option value="q3-2024">Q3 2024 (يوليو - سبتمبر)</option>
-                            <option value="q4-2024" selected>Q4 2024 (أكتوبر - ديسمبر)</option>
+                            <option value="q1-2024">Q1 2026 (يناير - مارس)</option>
+                            <option value="q2-2024">Q2 2026 (أبريل - يونيو)</option>
+                            <option value="q3-2024">Q3 2026 (يوليو - سبتمبر)</option>
+                            <option value="q4-2024" selected>Q4 2026 (أكتوبر - ديسمبر)</option>
                         </select>
                     </div>
                 </div>
@@ -596,6 +596,43 @@
         </div>
     </div>
 
+
+    <!-- ============================================
+         DATA TABLE (Fleet Details)
+    ============================================ -->
+    <div class="container mt-5 mb-5">
+        <div class="chart-container">
+            <div class="chart-header">
+                <div class="chart-title">
+                    <i class="fas fa-table"></i>
+                    تفاصيل أداء الشاحنات
+                </div>
+                <div class="chart-actions">
+                    <button onclick="exportTable()">
+                        <i class="fas fa-download me-1"></i>تصدير الجدول
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table" id="fleetTable">
+                    <thead>
+                        <tr>
+                            <th>رقم الشاحنة</th>
+                            <th>تكلفة الوقود (ر.س)</th>
+                            <th>الصيانة (ر.س)</th>
+                            <th>الكفاءة (%)</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fleetTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
     <!-- ============================================
          CHARTS SECTION
     ============================================ -->
@@ -656,41 +693,6 @@
                     <div id="trendChartSkeleton" class="skeleton skeleton-chart"></div>
                     <canvas id="trendChart" style="display: none;"></canvas>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================
-         DATA TABLE (Fleet Details)
-    ============================================ -->
-    <div class="container mt-5 mb-5">
-        <div class="chart-container">
-            <div class="chart-header">
-                <div class="chart-title">
-                    <i class="fas fa-table"></i>
-                    تفاصيل أداء الشاحنات
-                </div>
-                <div class="chart-actions">
-                    <button onclick="exportTable()">
-                        <i class="fas fa-download me-1"></i>تصدير الجدول
-                    </button>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="data-table" id="fleetTable">
-                    <thead>
-                        <tr>
-                            <th>رقم الشاحنة</th>
-                            <th>تكلفة الوقود (ر.س)</th>
-                            <th>الصيانة (ر.س)</th>
-                            <th>الكفاءة (%)</th>
-                            <th>الحالة</th>
-                        </tr>
-                    </thead>
-                    <tbody id="fleetTableBody">
-                        <!-- Populated by JavaScript -->
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
