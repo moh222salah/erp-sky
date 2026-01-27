@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Advanced Financial Intelligence System - ZATCA Compliant">
     <meta name="theme-color" content="#667eea">
-    <title>ERPNext GL Financial Dashboard</title>
+    <title>ERPNext GL Intelligence | Financial Dashboard</title>
     
     <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" id="bootstrap-rtl">
@@ -808,10 +807,10 @@
                     <div class="col-lg-8 col-md-7">
                         <h1 class="hero-title">
                             <i class="fas fa-chart-line"></i>
-                            <span data-ar="نظام ERPNext المالي المتقدم" data-en="Advanced Financial Intelligence System">نظام ERPNext المالي المتقدم</span>
+                            <span data-ar="نظام الذكاء المالي المتقدم" data-en="Advanced Financial Intelligence System">نظام الذكاء المالي المتقدم</span>
                         </h1>
                         <p class="hero-subtitle">
-                            <span data-ar="شركة الطيبة للخدمات البيئية - المدينة المنورة" data-en="Al-Tayyibah Environmental Services - Madinah">شركة المدينة للخدمات البيئية - المدينة المنورة</span>
+                            <span data-ar="شركة الطيبة للخدمات البيئية - المدينة المنورة" data-en="Al-Tayyibah Environmental Services - Madinah">شركة الطيبة للخدمات البيئية - المدينة المنورة</span>
                             <br>
                             <small>
                                 <span data-ar="متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)" data-en="100% ZATCA Compliant">متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)</span>
@@ -963,43 +962,6 @@
         </div>
     </div>
 
-<!-- ============================================
-         DATA TABLE
-    ============================================ -->
-    <div class="container mt-4 mb-5">
-        <div class="chart-container">
-            <div class="chart-header">
-                <div class="chart-title">
-                    <i class="fas fa-table"></i>
-                    <span data-ar="تفاصيل أداء الشاحنات" data-en="Fleet Performance Details">تفاصيل أداء الشاحنات</span>
-                </div>
-                <div class="chart-actions">
-                    <button class="chart-btn" onclick="exportTable()">
-                        <i class="fas fa-download"></i>
-                        <span data-ar="تصدير الجدول" data-en="Export Table">تصدير الجدول</span>
-                    </button>
-                </div>
-            </div>
-            <div class="table-container">
-                <table class="data-table" id="fleetTable">
-                    <thead>
-                        <tr>
-                            <th><span data-ar="رقم الشاحنة" data-en="Truck #">رقم الشاحنة</span></th>
-                            <th><span data-ar="تكلفة الوقود (ر.س)" data-en="Fuel Cost (SAR)">تكلفة الوقود (ر.س)</span></th>
-                            <th><span data-ar="الصيانة (ر.س)" data-en="Maintenance (SAR)">الصيانة (ر.س)</span></th>
-                            <th><span data-ar="الكفاءة (%)" data-en="Efficiency (%)">الكفاءة (%)</span></th>
-                            <th><span data-ar="الحالة" data-en="Status">الحالة</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="fleetTableBody">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    
     <!-- ============================================
          CHARTS SECTION
     ============================================ -->
@@ -1065,6 +1027,41 @@
         </div>
     </div>
 
+    <!-- ============================================
+         DATA TABLE
+    ============================================ -->
+    <div class="container mt-4 mb-5">
+        <div class="chart-container">
+            <div class="chart-header">
+                <div class="chart-title">
+                    <i class="fas fa-table"></i>
+                    <span data-ar="تفاصيل أداء الشاحنات" data-en="Fleet Performance Details">تفاصيل أداء الشاحنات</span>
+                </div>
+                <div class="chart-actions">
+                    <button class="chart-btn" onclick="exportTable()">
+                        <i class="fas fa-download"></i>
+                        <span data-ar="تصدير الجدول" data-en="Export Table">تصدير الجدول</span>
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="fleetTable">
+                    <thead>
+                        <tr>
+                            <th><span data-ar="رقم الشاحنة" data-en="Truck #">رقم الشاحنة</span></th>
+                            <th><span data-ar="تكلفة الوقود (ر.س)" data-en="Fuel Cost (SAR)">تكلفة الوقود (ر.س)</span></th>
+                            <th><span data-ar="الصيانة (ر.س)" data-en="Maintenance (SAR)">الصيانة (ر.س)</span></th>
+                            <th><span data-ar="الكفاءة (%)" data-en="Efficiency (%)">الكفاءة (%)</span></th>
+                            <th><span data-ar="الحالة" data-en="Status">الحالة</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="fleetTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!-- ============================================
          THEME TOGGLE
@@ -1191,6 +1188,138 @@
             document.getElementById('fuelEfficiency').innerText = `${stats.fuel_efficiency}%`;
             document.getElementById('efficiencyChange').innerHTML = 
                 `<i class="fas fa-arrow-up"></i>+${stats.efficiency_improvement}%`;
+        }
+
+        // =====================================
+        // RENDER FLEET CHART
+        // =====================================
+        function renderFleetChart(fleetData) {
+            const ctx = document.getElementById('fleetChart').getContext('2d');
+            
+            if (chartInstances.fleetChart) {
+                chartInstances.fleetChart.destroy();
+            }
+            
+            chartInstances.fleetChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: fleetData.map(item => currentLang === 'ar' ? item.truck : item.truck_en || item.truck),
+                    datasets: [{
+                        label: currentLang === 'ar' ? 'تكلفة الوقود (ر.س)' : 'Fuel Cost (SAR)',
+                        data: fleetData.map(item => item.fuel_cost),
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        borderRadius: 10,
+                        hoverBackgroundColor: 'rgba(118, 75, 162, 0.9)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: window.innerWidth < 768 ? 1.2 : 2,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                            padding: 12,
+                            cornerRadius: 8,
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    return currentLang === 'ar' 
+                                        ? `التكلفة: ${formatCurrency(context.parsed.y)}`
+                                        : `Cost: ${formatCurrency(context.parsed.y)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => formatNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR'),
+                                font: { size: 11 }
+                            },
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 11 } }
+                        }
+                    },
+                    animation: {
+                        duration: 1200,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+
+        // =====================================
+        // RENDER EXPENSE PIE CHART
+        // =====================================
+        function renderExpensePieChart(expenseData) {
+            const ctx = document.getElementById('expensePieChart').getContext('2d');
+            
+            if (chartInstances.expensePieChart) {
+                chartInstances.expensePieChart.destroy();
+            }
+            
+            chartInstances.expensePieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: expenseData.map(item => currentLang === 'ar' ? item.category : item.category_en || item.category),
+                    datasets: [{
+                        data: expenseData.map(item => item.amount),
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.85)',
+                            'rgba(235, 51, 73, 0.85)',
+                            'rgba(250, 112, 154, 0.85)',
+                            'rgba(17, 153, 142, 0.85)',
+                            'rgba(79, 172, 254, 0.85)'
+                        ],
+                        borderWidth: 3,
+                        borderColor: '#fff',
+                        hoverOffset: 12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: window.innerWidth < 768 ? 1 : 1,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: { size: window.innerWidth < 768 ? 11 : 13 },
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                            padding: 12,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = formatCurrency(context.parsed);
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
         }
 
         // =====================================
@@ -1442,3 +1571,4 @@
 
 </body>
 </html>
+
