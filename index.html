@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERPNext Intelligence | لوحة تحكم الأداء المالي</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --primary-color: #0d6efd; --success-color: #198754; }
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
+        .stat-card { border: none; border-radius: 12px; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .stat-card:hover { transform: translateY(-5px); }
+        .chart-container { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .header-section { background: linear-gradient(135deg, #1e293b, #334155); color: white; padding: 40px 0; border-radius: 0 0 25px 25px; }
+    </style>
+</head>
+<body>
+
+<div class="header-section shadow-sm">
+    <div class="container text-center">
+        <h1 class="fw-bold">نظام إدارة الأسطول والتحصيل الذكي</h1>
+        <p class="lead">شركة الخدمات البيئية بالمدينة المنورة - متوافق مع معايير ZATCA</p>
+    </div>
+</div>
+
+<div class="container mt-n4">
+    <div class="row g-4 text-center">
+        <div class="col-md-3">
+            <div class="card stat-card p-3">
+                <h6 class="text-muted">صافي الربح</h6>
+                <h3 id="netProfit" class="text-success fw-bold">--</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card p-3">
+                <h6 class="text-muted">إجمالي المصروفات</h6>
+                <h3 id="totalExpenses" class="text-danger fw-bold">--</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card p-3">
+                <h6 class="text-muted">ضريبة VAT (15%)</h6>
+                <h3 id="taxPaid" class="text-primary fw-bold">--</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card p-3">
+                <h6 class="text-muted">كفاءة الوقود</h6>
+                <h3 class="text-warning fw-bold">88.4%</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto chart-container">
+            <h5 class="mb-4">تحليل تكاليف الأسطول (SAR)</h5>
+            <canvas id="fleetChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // وظيفة سحب البيانات من ملف الـ JSON
+    async function loadDemoData() {
+        try {
+            const response = await fetch('./data/demo_ledger.json');
+            const data = await response.json();
+
+            // تحديث كروت الإحصائيات
+            document.getElementById('netProfit').innerText = data.stats.net_profit.toLocaleString() + ' ر.س';
+            document.getElementById('totalExpenses').innerText = data.stats.expenses.toLocaleString() + ' ر.س';
+            document.getElementById('taxPaid').innerText = data.stats.tax_paid.toLocaleString() + ' ر.س';
+
+            // إعداد الرسم البياني
+            const ctx = document.getElementById('fleetChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.fleet_efficiency.map(item => item.truck),
+                    datasets: [{
+                        label: 'تكلفة الوقود (ر.س)',
+                        data: data.fleet_efficiency.map(item => item.fuel_cost),
+                        backgroundColor: '#0d6efd',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        } catch (error) {
+            console.error('Error loading demo data:', error);
+        }
+    }
+
+    loadDemoData();
+</script>
+
+</body>
+</html>
+
