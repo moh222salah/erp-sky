@@ -54,6 +54,29 @@
             --border-color: #374151;
         }
 
+        [data-theme="dark"] body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .control-panel,
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .chart-container {
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .filter-group select,
+        [data-theme="dark"] .filter-group input {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .data-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
         /* ============================================
            GLOBAL STYLES
         ============================================ */
@@ -163,6 +186,10 @@
             display: block;
         }
 
+        [data-theme="dark"] .filter-group label {
+            color: var(--text-secondary);
+        }
+
         .filter-group select,
         .filter-group input {
             border: 2px solid #e5e7eb;
@@ -243,6 +270,10 @@
             margin-bottom: 10px;
         }
 
+        [data-theme="dark"] .stat-label {
+            color: var(--text-secondary);
+        }
+
         .stat-value {
             font-size: 2.2rem;
             font-weight: 800;
@@ -292,6 +323,10 @@
             border-bottom: 2px solid #f3f4f6;
         }
 
+        [data-theme="dark"] .chart-header {
+            border-bottom-color: var(--border-color);
+        }
+
         .chart-title {
             font-size: 1.4rem;
             font-weight: 700;
@@ -299,6 +334,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        [data-theme="dark"] .chart-title {
+            color: var(--text-primary);
         }
 
         .chart-title i {
@@ -314,6 +353,7 @@
             font-size: 0.85rem;
             transition: var(--transition-smooth);
             margin-left: 8px;
+            cursor: pointer;
         }
 
         .chart-actions button:hover {
@@ -369,6 +409,10 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
+        [data-theme="dark"] .data-table td {
+            border-bottom-color: var(--border-color);
+        }
+
         .data-table tbody tr {
             transition: var(--transition-smooth);
         }
@@ -416,6 +460,10 @@
             box-shadow: var(--card-shadow);
             display: flex;
             gap: 5px;
+        }
+
+        [data-theme="dark"] .lang-toggle {
+            background: var(--card-bg);
         }
 
         .lang-btn {
@@ -470,6 +518,18 @@
         }
 
         /* ============================================
+           INFO BADGE
+        ============================================ */
+        .info-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* ============================================
            RESPONSIVE DESIGN
         ============================================ */
         @media (max-width: 768px) {
@@ -481,6 +541,12 @@
             .lang-toggle {
                 top: 15px;
                 right: 15px;
+            }
+            .theme-toggle {
+                bottom: 15px;
+                left: 15px;
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -505,6 +571,11 @@
         /* Translation Helper */
         [data-translate] {
             transition: opacity 0.3s;
+        }
+
+        /* Smooth transitions for language switching */
+        * {
+            transition: font-family 0.3s ease;
         }
     </style>
 </head>
@@ -532,19 +603,32 @@
                     <img src="" alt="Company Logo" class="company-logo" id="companyLogo" style="display: none;">
                     <h1 class="text-white">
                         <i class="fas fa-chart-line me-3"></i>
-                        <span data-translate="page_title">ERPNext GL System</span>
+                        <span data-translate="page_title">نظام ERPNext GL المالي</span>
                     </h1>
-                    <p class="lead text-white">
-                        <span data-translate="company_name" id="companyName">--</span>
-                        <br>
-                        <small data-translate="zatca_compliant">متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)</small>
+                    <p class="lead text-white mb-2">
+                        <strong><span data-translate="company_name" id="companyName">--</span></strong>
                     </p>
+                    <p class="text-white mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span id="companyLocation">--</span>
+                    </p>
+                    <div class="info-badge">
+                        <i class="fas fa-file-contract me-2"></i>
+                        <span data-translate="label_registration">رقم السجل:</span> <span id="companyReg">--</span>
+                    </div>
+                    <div class="info-badge ms-2">
+                        <i class="fas fa-receipt me-2"></i>
+                        <span data-translate="label_vat">الرقم الضريبي:</span> <span id="companyVAT">--</span>
+                    </div>
                 </div>
                 <div class="col-lg-4 text-center">
                     <span class="zatca-badge">
                         <i class="fas fa-check-circle fa-lg"></i>
                         <span data-translate="zatca_certified">معتمد من ZATCA</span>
                     </span>
+                    <p class="text-white mt-3 mb-0" style="font-size: 0.9rem;">
+                        <span data-translate="zatca_compliant">متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -572,6 +656,7 @@
                             <option value="q2-2026">Q2 2026</option>
                             <option value="q3-2026">Q3 2026</option>
                             <option value="q4-2026" selected>Q4 2026</option>
+                            <option value="fy-2026">FY 2026</option>
                         </select>
                     </div>
                 </div>
@@ -586,7 +671,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary w-100" onclick="applyFilters()">
+                    <button class="btn btn-primary w-100" onclick="applyFilters()" style="background: var(--primary-gradient); border: none; padding: 10px;">
                         <i class="fas fa-sync-alt me-2"></i><span data-translate="btn_refresh">تحديث البيانات</span>
                     </button>
                 </div>
@@ -731,14 +816,14 @@
     </div>
 
     <!-- ============================================
-         DATA TABLE (Fleet Details)
+         DATA TABLE (Fleet/Vehicle Details)
     ============================================ -->
     <div class="container mt-5 mb-5" id="fleetTableContainer">
         <div class="chart-container">
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fas fa-table"></i>
-                    <span data-translate="table_fleet_details" id="tableTitle">تفاصيل أداء الشاحنات</span>
+                    <span data-translate="table_fleet_details" id="tableTitle">تفاصيل أداء المركبات</span>
                 </div>
                 <div class="chart-actions">
                     <button onclick="exportTable()">
@@ -750,7 +835,7 @@
                 <table class="data-table" id="fleetTable">
                     <thead>
                         <tr>
-                            <th data-translate="th_vehicle_id">رقم الشاحنة</th>
+                            <th data-translate="th_vehicle_id">رقم المركبة</th>
                             <th data-translate="th_fuel_cost">تكلفة الوقود (ر.س)</th>
                             <th data-translate="th_maintenance">الصيانة (ر.س)</th>
                             <th data-translate="th_efficiency">الكفاءة (%)</th>
@@ -792,11 +877,13 @@
             ar: {
                 page_title: 'نظام ERPNext GL المالي',
                 company_name: 'اسم الشركة',
-                zatca_compliant: 'متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)',
+                zatca_compliant: 'متوافق 100% مع متطلبات هيئة الزكاة والضريبة والجمارك',
                 zatca_certified: 'معتمد من ZATCA',
                 label_company: 'الشركة',
                 label_period: 'الفترة المالية',
                 label_report_type: 'نوع التقرير',
+                label_registration: 'رقم السجل',
+                label_vat: 'الرقم الضريبي',
                 report_summary: 'ملخص تنفيذي',
                 report_detailed: 'تقرير تفصيلي',
                 report_zatca: 'تقرير ZATCA',
@@ -818,7 +905,13 @@
                 th_efficiency: 'الكفاءة (%)',
                 th_status: 'الحالة',
                 status_active: 'نشط',
-                status_maintenance: 'صيانة'
+                status_maintenance: 'صيانة',
+                loading_data: 'جاري تحميل البيانات...',
+                data_updated: 'تم تحديث البيانات بنجاح',
+                exporting_pdf: 'جاري تصدير PDF...',
+                exporting_excel: 'جاري تصدير Excel...',
+                table_exported: 'تم تصدير الجدول بنجاح',
+                chart_toggled: 'تم تبديل نوع الرسم البياني'
             },
             en: {
                 page_title: 'ERPNext GL Financial System',
@@ -828,6 +921,8 @@
                 label_company: 'Company',
                 label_period: 'Financial Period',
                 label_report_type: 'Report Type',
+                label_registration: 'Registration No',
+                label_vat: 'VAT Number',
                 report_summary: 'Executive Summary',
                 report_detailed: 'Detailed Report',
                 report_zatca: 'ZATCA Report',
@@ -849,7 +944,13 @@
                 th_efficiency: 'Efficiency (%)',
                 th_status: 'Status',
                 status_active: 'Active',
-                status_maintenance: 'Maintenance'
+                status_maintenance: 'Maintenance',
+                loading_data: 'Loading data...',
+                data_updated: 'Data updated successfully',
+                exporting_pdf: 'Exporting PDF...',
+                exporting_excel: 'Exporting Excel...',
+                table_exported: 'Table exported successfully',
+                chart_toggled: 'Chart type toggled'
             }
         };
 
@@ -857,6 +958,18 @@
         // INITIALIZATION
         // ====================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                toggleDarkMode();
+            }
+            
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('language');
+            if (savedLang && savedLang !== currentLang) {
+                switchLanguage(savedLang);
+            }
+            
             setTimeout(() => {
                 loadDemoData();
             }, 800);
@@ -880,7 +993,11 @@
                 
             } catch (error) {
                 console.error('Error loading data:', error);
-                showErrorNotification('فشل تحميل البيانات. يرجى تحديث الصفحة.');
+                showErrorNotification(
+                    currentLang === 'ar' 
+                        ? 'فشل تحميل البيانات. يرجى تحديث الصفحة.' 
+                        : 'Failed to load data. Please refresh the page.'
+                );
             }
         }
 
@@ -912,14 +1029,19 @@
             // Hide skeletons and show content
             hideSkeletons();
             
-            // Update company name
+            // Update company information
             document.getElementById('companyName').textContent = currentCompany.name[currentLang];
+            document.getElementById('companyLocation').textContent = currentCompany.location[currentLang];
+            document.getElementById('companyReg').textContent = currentCompany.registration;
+            document.getElementById('companyVAT').textContent = currentCompany.vat_number;
             
             // Update company logo
             const logoImg = document.getElementById('companyLogo');
             if (currentCompany.logo) {
                 logoImg.src = currentCompany.logo;
                 logoImg.style.display = 'block';
+            } else {
+                logoImg.style.display = 'none';
             }
             
             // Update UI components
@@ -965,20 +1087,20 @@
         // UPDATE STAT CARDS
         // ====================================
         function updateStatCards(stats) {
-            document.getElementById('netProfit').innerText = formatArabicCurrency(stats.net_profit);
+            document.getElementById('netProfit').innerText = formatCurrency(stats.net_profit);
             document.getElementById('profitChange').innerHTML = 
-                `<i class="fas fa-arrow-up me-1"></i>+${stats.profit_growth}%`;
+                `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.profit_growth)}%`;
             
-            document.getElementById('totalExpenses').innerText = formatArabicCurrency(stats.expenses);
+            document.getElementById('totalExpenses').innerText = formatCurrency(stats.expenses);
             document.getElementById('expensesChange').innerHTML = 
-                `<i class="fas fa-arrow-up me-1"></i>+${stats.expense_growth}%`;
+                `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.expense_growth)}%`;
             
-            document.getElementById('taxPaid').innerText = formatArabicCurrency(stats.tax_paid);
+            document.getElementById('taxPaid').innerText = formatCurrency(stats.tax_paid);
             
             if (stats.fuel_efficiency > 0) {
-                document.getElementById('fuelEfficiency').innerText = `${stats.fuel_efficiency}%`;
+                document.getElementById('fuelEfficiency').innerText = `${formatNumber(stats.fuel_efficiency)}%`;
                 document.getElementById('efficiencyChange').innerHTML = 
-                    `<i class="fas fa-arrow-up me-1"></i>+${stats.efficiency_improvement}%`;
+                    `<i class="fas fa-arrow-up me-1"></i>+${formatNumber(stats.efficiency_improvement)}%`;
             }
         }
 
@@ -1027,9 +1149,16 @@
                             bodyColor: '#fff',
                             padding: 12,
                             cornerRadius: 8,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
                             callbacks: {
                                 label: function(context) {
-                                    return `${currentLang === 'ar' ? 'التكلفة' : 'Cost'}: ${formatArabicCurrency(context.parsed.y)}`;
+                                    return `${currentLang === 'ar' ? 'التكلفة' : 'Cost'}: ${formatCurrency(context.parsed.y)}`;
                                 }
                             }
                         }
@@ -1039,14 +1168,22 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return formatArabicNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
+                                    return formatNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
+                                },
+                                font: {
+                                    size: 12
                                 }
                             },
                             grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
+                                color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
+                            ticks: {
+                                font: {
+                                    size: 12
+                                }
+                            },
                             grid: {
                                 display: false
                             }
@@ -1070,21 +1207,24 @@
                 chartInstances.expensePieChart.destroy();
             }
             
+            const colors = [
+                'rgba(102, 126, 234, 0.8)',
+                'rgba(235, 51, 73, 0.8)',
+                'rgba(250, 112, 154, 0.8)',
+                'rgba(17, 153, 142, 0.8)',
+                'rgba(79, 172, 254, 0.8)',
+                'rgba(254, 225, 64, 0.8)'
+            ];
+            
             chartInstances.expensePieChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: expenseData.map(item => item.category[currentLang]),
                     datasets: [{
                         data: expenseData.map(item => item.amount),
-                        backgroundColor: [
-                            'rgba(102, 126, 234, 0.8)',
-                            'rgba(235, 51, 73, 0.8)',
-                            'rgba(250, 112, 154, 0.8)',
-                            'rgba(17, 153, 142, 0.8)',
-                            'rgba(79, 172, 254, 0.8)'
-                        ],
+                        backgroundColor: colors.slice(0, expenseData.length),
                         borderWidth: 3,
-                        borderColor: '#fff',
+                        borderColor: isDarkMode ? '#252836' : '#fff',
                         hoverOffset: 15
                     }]
                 },
@@ -1096,20 +1236,31 @@
                             position: 'bottom',
                             labels: {
                                 padding: 15,
-                                font: { size: 13 }
+                                font: { 
+                                    size: 13,
+                                    family: currentLang === 'ar' ? 'Cairo' : 'Inter'
+                                },
+                                color: isDarkMode ? '#e5e7eb' : '#1f2937'
                             }
                         },
                         tooltip: {
                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             padding: 12,
                             cornerRadius: 8,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
                             callbacks: {
                                 label: function(context) {
                                     const label = context.label || '';
-                                    const value = formatArabicCurrency(context.parsed);
+                                    const value = formatCurrency(context.parsed);
                                     const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                     const percentage = ((context.parsed / total) * 100).toFixed(1);
-                                    return `${label}: ${value} (${percentage}%)`;
+                                    return `${label}: ${value} (${formatNumber(parseFloat(percentage))}%)`;
                                 }
                             }
                         }
@@ -1147,7 +1298,7 @@
                         pointRadius: 6,
                         pointHoverRadius: 8,
                         pointBackgroundColor: '#11998e',
-                        pointBorderColor: '#fff',
+                        pointBorderColor: isDarkMode ? '#252836' : '#fff',
                         pointBorderWidth: 2
                     }]
                 },
@@ -1160,9 +1311,16 @@
                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             padding: 12,
                             cornerRadius: 8,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
                             callbacks: {
                                 label: function(context) {
-                                    return `${currentLang === 'ar' ? 'الربح' : 'Profit'}: ${formatArabicCurrency(context.parsed.y)}`;
+                                    return `${currentLang === 'ar' ? 'الربح' : 'Profit'}: ${formatCurrency(context.parsed.y)}`;
                                 }
                             }
                         }
@@ -1172,14 +1330,24 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return formatArabicNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
-                                }
+                                    return formatNumber(value) + (currentLang === 'ar' ? ' ر.س' : ' SAR');
+                                },
+                                font: {
+                                    size: 12
+                                },
+                                color: isDarkMode ? '#9ca3af' : '#6b7280'
                             },
                             grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
+                                color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
+                            ticks: {
+                                font: {
+                                    size: 12
+                                },
+                                color: isDarkMode ? '#9ca3af' : '#6b7280'
+                            },
                             grid: {
                                 display: false
                             }
@@ -1201,19 +1369,23 @@
             tbody.innerHTML = '';
             
             fleetData.forEach(item => {
+                const statusText = item.status === 'active' 
+                    ? translations[currentLang].status_active 
+                    : translations[currentLang].status_maintenance;
+                
                 const row = `
                     <tr>
                         <td><strong>${item.truck}</strong></td>
-                        <td>${formatArabicCurrency(item.fuel_cost)}</td>
-                        <td>${formatArabicCurrency(item.maintenance || 0)}</td>
+                        <td>${formatCurrency(item.fuel_cost)}</td>
+                        <td>${formatCurrency(item.maintenance || 0)}</td>
                         <td>
-                            <span style="color: ${item.efficiency >= 85 ? '#11998e' : '#eb3349'};">
-                                ${item.efficiency}%
+                            <span style="color: ${item.efficiency >= 85 ? '#11998e' : '#eb3349'}; font-weight: 600;">
+                                ${formatNumber(item.efficiency)}%
                             </span>
                         </td>
                         <td>
                             <span class="badge ${item.status === 'active' ? 'bg-success' : 'bg-warning'}">
-                                ${item.status === 'active' ? translations[currentLang].status_active : translations[currentLang].status_maintenance}
+                                ${statusText}
                             </span>
                         </td>
                     </tr>
@@ -1227,6 +1399,9 @@
         // ====================================
         function switchLanguage(lang) {
             currentLang = lang;
+            
+            // Save language preference
+            localStorage.setItem('language', lang);
             
             // Update HTML attributes
             document.documentElement.setAttribute('lang', lang);
@@ -1261,13 +1436,10 @@
             }
         }
 
-        
-        
-        
-    // ====================================
+        // ====================================
         // UTILITY FUNCTIONS
         // ====================================
-        function formatArabicCurrency(amount) {
+        function formatCurrency(amount) {
             const formatted = new Intl.NumberFormat(currentLang === 'ar' ? 'ar-SA' : 'en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
@@ -1276,24 +1448,21 @@
             return formatted + (currentLang === 'ar' ? ' ر.س' : ' SAR');
         }
 
-        function formatArabicNumber(number) {
-            return new Intl.NumberFormat(currentLang === 'ar' ? 'ar-SA' : 'en-US').format(number);
+        function formatNumber(number) {
+            return new Intl.NumberFormat(currentLang === 'ar' ? 'ar-SA' : 'en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            }).format(number);
         }
 
         // ====================================
         // FILTER FUNCTIONS
         // ====================================
         function applyFilters() {
-            showNotification(
-                currentLang === 'ar' ? 'جاري تحديث البيانات...' : 'Refreshing data...', 
-                'info'
-            );
+            showNotification(translations[currentLang].loading_data, 'info');
             setTimeout(() => {
                 loadCompanyData();
-                showNotification(
-                    currentLang === 'ar' ? 'تم تحديث البيانات بنجاح' : 'Data updated successfully', 
-                    'success'
-                );
+                showNotification(translations[currentLang].data_updated, 'success');
             }, 1000);
         }
 
@@ -1304,15 +1473,9 @@
             if (format === 'pdf') {
                 const element = document.querySelector('.chart-container');
                 html2pdf().from(element).save(`${chartId}-report.pdf`);
-                showNotification(
-                    currentLang === 'ar' ? 'جاري تصدير PDF...' : 'Exporting PDF...', 
-                    'info'
-                );
+                showNotification(translations[currentLang].exporting_pdf, 'info');
             } else if (format === 'excel') {
-                showNotification(
-                    currentLang === 'ar' ? 'جاري تصدير Excel...' : 'Exporting Excel...', 
-                    'info'
-                );
+                showNotification(translations[currentLang].exporting_excel, 'info');
             }
         }
 
@@ -1325,21 +1488,18 @@
             
             const rows = table.querySelectorAll('tbody tr');
             rows.forEach(row => {
-                const cols = Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim());
+                const cols = Array.from(row.querySelectorAll('td')).map(td => td.textContent.trim().replace(/,/g, ''));
                 csv.push(cols.join(','));
             });
             
-            const csvContent = csv.join('\n');
+            const csvContent = '\uFEFF' + csv.join('\n'); // Add BOM for UTF-8
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'fleet-data.csv';
+            link.download = `fleet-data-${currentCompany.id}.csv`;
             link.click();
             
-            showNotification(
-                currentLang === 'ar' ? 'تم تصدير الجدول بنجاح' : 'Table exported successfully', 
-                'success'
-            );
+            showNotification(translations[currentLang].table_exported, 'success');
         }
 
         // ====================================
@@ -1349,6 +1509,16 @@
             isDarkMode = !isDarkMode;
             document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
             document.getElementById('themeIcon').className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+            
+            // Save theme preference
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            
+            // Reload charts to update colors
+            if (currentCompany) {
+                renderMainChart(currentCompany);
+                renderExpensePieChart(currentCompany.expense_breakdown);
+                renderTrendChart(currentCompany.monthly_trend);
+            }
         }
 
         // ====================================
@@ -1360,10 +1530,7 @@
             
             chart.config.type = chart.config.type === 'line' ? 'bar' : 'line';
             chart.update();
-            showNotification(
-                currentLang === 'ar' ? 'تم تبديل نوع الرسم البياني' : 'Chart type toggled', 
-                'success'
-            );
+            showNotification(translations[currentLang].chart_toggled, 'success');
         }
 
         // ====================================
@@ -1375,6 +1542,13 @@
                 error: '#eb3349',
                 info: '#667eea',
                 warning: '#fa709a'
+            };
+            
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                info: 'fa-info-circle',
+                warning: 'fa-exclamation-triangle'
             };
             
             const notification = document.createElement('div');
@@ -1389,18 +1563,47 @@
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
                 z-index: 10000;
                 animation: slideIn 0.5s ease;
+                font-family: ${currentLang === 'ar' ? 'Cairo' : 'Inter'};
+                max-width: 350px;
             `;
-            notification.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
+            notification.innerHTML = `<i class="fas ${icons[type]} me-2"></i>${message}`;
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.remove();
+                notification.style.animation = 'slideOut 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
             }, 3000);
         }
 
         function showErrorNotification(message) {
             showNotification(message, 'error');
         }
+
+        // Add CSS animations for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateX(${currentLang === 'ar' ? '100px' : '-100px'});
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(${currentLang === 'ar' ? '100px' : '-100px'});
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 
     <!-- Bootstrap JS -->
