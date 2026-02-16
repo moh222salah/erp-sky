@@ -1,4 +1,4 @@
-# 🔍 ERPNext GL Intelligence Engine | محرك الذكاء المالي
+# 🔍 ERPNext GL Intelligence Engine 
 
 <div align="center">
 
@@ -8,10 +8,10 @@
 ![Arabic](https://img.shields.io/badge/Arabic-Localized-success.svg)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://moh222salah.github.io/erp-demo)
 
-**حوّل دفتر الأستاذ من الفوضى إلى الوضوح في أجزاء من الثانية**  
+
 **Transform your General Ledger from confusion to clarity in milliseconds**
 
-[🎬 **عرض تجريبي مباشر**](https://moh222salah.github.io/erp-demo) | [📖 دراسة الحالة](CASE_STUDY.md) | [🚀 البدء السريع](#installation)
+[🎬 ****](https://moh222salah.github.io/erp-demo) | [📖 ](CASE_STUDY.md) | [🚀 ](#installation)
 
 </div>
 
